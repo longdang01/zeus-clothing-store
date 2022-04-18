@@ -1,7 +1,7 @@
 Use scss
-/** Run scss */
 sass --watch resources/scss/client:public/assets/client/dist/css/style.css
 sass --watch resources/scss/admin:public/assets/admin/dist/css/style.css
+
 
 
 
