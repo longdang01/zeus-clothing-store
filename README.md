@@ -1,6 +1,8 @@
-Use scss
-sass --watch resources/scss/client:public/assets/client/dist/css/style.css
-sass --watch resources/scss/admin:public/assets/admin/dist/css/style.css
+## SCSS
+<p>sass --watch resources/scss/client.scss:public/assets/client/dist/css/style.css</p>
+<p>sass --watch resources/scss/admin.scss:public/assets/admin/dist/css/style.css</p>
+
+
 
 
 
