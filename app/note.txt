@@ -1,0 +1,61 @@
+
+//paragraph animate deleted
+@media (min-width: 768px) {
+    .animate {
+      animation-duration: 0.3s;
+      -webkit-animation-duration: 0.3s;
+      animation-fill-mode: both;
+      -webkit-animation-fill-mode: both;
+    }
+  }
+  
+  
+@-webkit-keyframes slideIn {
+    0% {
+        -webkit-transform: transform;
+        -webkit-opacity: 0;
+    }
+
+    100% {
+        -webkit-transform: translateY(0);
+        -webkit-opacity: 1;
+    }
+
+    0% {
+        -webkit-transform: translateY(1rem);
+        -webkit-opacity: 0;
+    }
+}
+
+
+//create model
+php artisan make:model Brand
+php artisan make:model Supplier
+php artisan make:model Category
+php artisan make:model Customer
+php artisan make:model Role
+php artisan make:model Position
+php artisan make:model Color
+php artisan make:model Size
+php artisan make:model Payment
+php artisan make:model Transport
+php artisan make:model SubCategory
+php artisan make:model Product
+php artisan make:model Price
+php artisan make:model Image
+php artisan make:model Promotion
+php artisan make:model Stock
+php artisan make:model Users
+php artisan make:model News
+php artisan make:model Orders
+php artisan make:model OrdersDetail
+php artisan make:model Invoice
+php artisan make:model InvoiceDetail
+php artisan make:model Cart
+php artisan make:model CartDetail
+
+
+
+
+php artisan make:controller api/ProductController --resource
+

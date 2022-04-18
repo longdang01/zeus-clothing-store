@@ -1,0 +1,127 @@
+@mixin flex($position) {
+    display: flex;
+    justify-content: $position;
+    align-items: center;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: $white-color;
+    color: $text-color;    
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: $text-color;
+
+    &:hover {
+        color: inherit;
+    }  
+}
+
+ul {
+    margin-bottom: 0;
+    padding-left: 0;
+}
+
+ul, li {
+    list-style: none;
+}
+
+.container {
+    // max-width: 1300px;
+}
+
+.dash {
+    text-decoration: line-through;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+
+.btn-dark {
+    background: $black-color;
+}
+
+.breadcrumb {
+    padding: 1rem 0;
+
+    .breadcrumb-item {
+        
+        &.active {
+            font-weight: 600;
+            color: $primary-color;
+        }
+    }
+}
+
+#scrollUp {
+	right: 10px;
+	z-index: 33;
+	bottom: 10px;
+	text-align: center;
+
+    &:hover i {
+        background: $primary-color;
+	    color:#fff;
+    }
+
+    i {
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+        background:transparent;
+        background:#222;
+        border-radius: 0;
+        font-size: 18px;
+        -webkit-transition: all 500ms ease;
+        -moz-transition: all 500ms ease;
+        transition: all 500ms ease;
+        display:block;
+        color: #fff;
+        box-shadow: 0px 4px 19px #00000038;
+    }
+}
+
+.btn-watch-more {
+    @include flex(center);
+    background: $white-color;
+    color: $black-color;
+    height: 42px;
+    padding: 0 !important;
+    font-weight: 600;
+    border-radius: 3px;
+    border: 2px solid $black-color;
+
+    &:hover {
+        background: $white-color;
+    }
+
+    &:hover span {
+        background: $black-color;
+        transform: translate(-3px, -6px);
+        color: $white-color;
+        border-radius: 3px;
+        border: 2px solid $black-color;
+    }
+    
+    span {
+        padding: 1rem 2rem;
+        transition: transform .3s ease;
+    }
+}

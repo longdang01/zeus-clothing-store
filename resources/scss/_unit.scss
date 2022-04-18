@@ -1,0 +1,99 @@
+/*=======================
+Unit, newsletter, services: Homepage
+=========================*/ 
+
+.unit__header {
+    @include flex(space-between);
+    padding: 3rem 0 2rem;
+
+    & > div {
+        border-bottom: 3px solid $primary-color;
+    }
+
+    &-title {
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
+
+    &-description {
+        font-size: 1.3rem;
+        color: #4b4b4b;
+    }
+
+    .btn {
+        padding: 1rem 2rem;
+        font-size: 1.3rem;
+    }
+}
+
+.unit__body {
+
+    .services__wrap {
+        padding: 3rem 0 3.5rem;
+        background: #f8f8f8;
+
+        &-item {
+            @include flex(space-between);
+
+            &-picture {
+                font-size: 2.5rem;
+                transition: all .3s ease;
+
+                &:hover {
+                    color: $primary-color;
+                }
+            }
+
+            &-info {
+                flex: 2;
+                padding-left: 2.5rem;
+                
+                &-name {
+                    font-size: 1.6rem;
+                    font-weight: bold;
+                    transition: all .3s ease;
+
+                    &:hover {
+                        color: $primary-color;
+                    }
+                }
+
+                &-description {
+                    font-size: 1.4rem;
+                    font-weight: 600;
+                    color: grey;
+                }
+            }
+        }
+    }
+
+    .newsletter__wrap {
+
+        form {
+            width: 50%;
+            @include flex(space-between);
+        }
+
+        &-email {
+            height: 48px;
+            flex: 2;
+            border: 1px solid #e0e0e0;
+            outline: none;
+            padding: 0 1.5rem;
+            border-radius: 0;
+        }
+
+        &-btn-send {
+            padding: 0 3rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+            height: 48px;
+            border: 0;
+            transition: all .3s ease;
+
+            &:hover {
+                background: $primary-color;
+            }
+        }
+    }
+}

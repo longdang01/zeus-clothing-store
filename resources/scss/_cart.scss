@@ -1,0 +1,189 @@
+//Mini cart
+.mini__cart {
+    
+    .modal {
+        // animation: fadeInDown .8s ease;
+
+        .modal-dialog {
+            max-width: 650px;
+            max-height: 500px;
+
+            .modal-content {
+                border: 1px solid #e0e0e0;
+                border-radius: 5px;
+                box-shadow: 0 0 5px rgba(0, 0, 0, .15);
+            }
+
+            .modal-footer {
+                width: 100%;
+                justify-content: space-between;
+                font-size: 1.4rem;
+                font-weight: 600;
+
+                button {
+                    font-size: 1.3rem;
+                    font-weight: 600;
+                    padding: .5rem 2rem;
+                    color: $white-color;
+                    background: $black-color;  
+                    transition: .3s all ease;
+                    
+                    &:hover {
+                        background: $primary-color;
+                    }
+                }
+            }
+
+            .modal-header {
+
+                .modal-title {
+                    ul {
+    
+                        li {
+                            background: #ff5f56;
+                            display: inline-block;
+                            width: 10px;
+                            height: 10px;
+                            border-radius: 50%;
+                        }
+    
+                        & li:nth-child(2) {
+                            background: #ffbd2e;
+                            margin-left: .5rem;
+                        }
+    
+                        & li:last-child {
+                            background: #27c93f;
+                            margin-left: .5rem;
+                        }
+                    }
+                }
+
+                button {
+                    transition: transform .3s ease;
+
+                    &:hover {
+                        transform: rotate(90deg);
+                    }
+                }
+            }
+
+            .modal-body {
+                max-height: 340px;
+            }
+
+
+        }
+    }
+
+    &-item {
+        @include flex(space-between);
+        height: 60px;
+        margin-bottom: 2rem;
+
+        &-picture {
+            width: 60px;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        &-info {
+            padding: 0 1rem;
+            flex: 2;
+
+            a {
+                font-size: 1.4rem;
+                font-weight: 600;
+            }
+
+            p {
+                font-size: 1.3rem;
+                color: grey;
+                margin-bottom: 0;
+            }
+        }
+
+        .btn-delete {
+            display: grid;
+            place-items: center;
+            color: $black-color;
+            font-size: 1.4rem;
+            width: 30px;
+            height: 30px;
+            background: #d6d6d6;
+            border-radius: 2px;
+            transition: all .3s ease;
+
+            &:hover {
+                background: $primary-color;
+                color: $white-color;
+            }
+        }
+    }
+}
+
+// Cart
+.cart__wrap {
+    min-height: 405px;
+
+    table {
+
+        thead {
+            background: $primary-color;
+            color: $white-color;
+
+            th {
+                padding: 1.5rem;
+                text-align: center;
+                border-bottom-width: 0;
+            }
+        }
+
+        tbody {
+
+            td {
+                text-align: center;
+                vertical-align: middle;
+
+                img {
+                    width: 80px;
+                    height: 80px;
+                    object-fit: cover;
+                }
+
+                .btn-classify {
+                    
+                    i {
+                        margin-left: .5rem;
+                    }
+                }
+
+                .content__options {
+
+                    &-handle-amount {
+                        @include flex(center);
+                        
+                        & input:not(:nth-child(2)) {
+                            cursor: pointer;
+                        }
+                    }
+                    
+                    &-amount {
+                        border-left: 0 !important;
+                        border-right: 0 !important;
+                    }
+    
+                    &-item {
+                        @include flex(center);
+                        width: 35px;
+                        height: 35px;
+                        border: 1px solid #d6d6d6;
+                        color: $black-color;
+                        text-align: center;
+                        outline: none;
+                    }
+                }
+            }
+        }
+    }
+}

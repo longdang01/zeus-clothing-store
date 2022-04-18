@@ -1,0 +1,66 @@
+// Blog
+.blog__wrap {
+    position: relative;
+    
+    &-img {
+        display: block;
+        overflow: hidden;
+        
+        img {
+            transition: all .3s ease;
+        }
+
+        &:hover img {
+            transform: scale(1.1);
+        }
+    }
+
+    &-info {
+        padding: 2rem 2rem 3.5rem 2rem;
+        text-align: center;
+
+        &-time {
+            font-weight: 600;
+            color: grey;
+        }
+
+        &-name {
+            display: block;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            transition: all .3s ease;
+
+            &:hover {
+                color: $primary-color;
+            }
+        }
+
+        .btn-read {
+            position: relative;
+            display: inline-block;
+            font-weight: 600;
+            transition: all .3s ease;
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 50%;
+                height: 3px;
+                background: $primary-color;
+                transition: all .3s ease;
+            }
+
+            &:hover {
+                text-shadow: 0 0 .65px #333, 0 0 .65px #333;
+            }
+
+            &:hover::after {
+                width: 100%;
+            }
+        }
+    }
+
+}

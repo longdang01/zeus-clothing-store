@@ -1,0 +1,242 @@
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #fff;
+  color: #000;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+a:hover {
+  color: inherit;
+}
+
+ul {
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+ul, li {
+  list-style: none;
+}
+
+.dash {
+  text-decoration: line-through;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+.btn-dark {
+  background: #000;
+}
+
+.breadcrumb {
+  padding: 1rem 0;
+}
+.breadcrumb .breadcrumb-item.active {
+  font-weight: 600;
+  color: #FF7F50;
+}
+
+#scrollUp {
+  right: 10px;
+  z-index: 33;
+  bottom: 10px;
+  text-align: center;
+}
+#scrollUp:hover i {
+  background: #FF7F50;
+  color: #fff;
+}
+#scrollUp i {
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  background: transparent;
+  background: #222;
+  border-radius: 0;
+  font-size: 18px;
+  -webkit-transition: all 500ms ease;
+  -moz-transition: all 500ms ease;
+  transition: all 500ms ease;
+  display: block;
+  color: #fff;
+  box-shadow: 0px 4px 19px rgba(0, 0, 0, 0.2196078431);
+}
+
+.btn-watch-more {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  color: #000;
+  height: 42px;
+  padding: 0 !important;
+  font-weight: 600;
+  border-radius: 3px;
+  border: 2px solid #000;
+}
+.btn-watch-more:hover {
+  background: #fff;
+}
+.btn-watch-more:hover span {
+  background: #000;
+  transform: translate(-3px, -6px);
+  color: #fff;
+  border-radius: 3px;
+  border: 2px solid #000;
+}
+.btn-watch-more span {
+  padding: 1rem 2rem;
+  transition: transform 0.3s ease;
+}
+
+/*=======================
+    Nice select 
+=========================*/
+.nice-select {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 155px;
+  height: 48px;
+  border-top: 0;
+  border-bottom: 0;
+  border-left: 0;
+  border-right: 1px solid #e0e0e0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  font-weight: 500;
+}
+.nice-select .current {
+  width: 100%;
+}
+.nice-select:after {
+  margin-top: -3px;
+}
+.nice-select:active, .nice-select.open, .nice-select:focus {
+  border-color: #e0e0e0;
+}
+.nice-select .list {
+  width: 100%;
+}
+.nice-select.open .list {
+  animation: fadeInUp 0.3s ease;
+}
+
+.nav-pills {
+  margin-bottom: 1rem;
+}
+.nav-pills .nav-item .nav-link {
+  padding: 1rem 2rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #000;
+}
+.nav-pills .nav-item .nav-link.active {
+  background: #FF7F50;
+  color: #fff;
+}
+
+/*=======================
+Unit, newsletter, services: Homepage
+=========================*/
+.unit__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 0 2rem;
+}
+.unit__header > div {
+  border-bottom: 3px solid #FF7F50;
+}
+.unit__header-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+.unit__header-description {
+  font-size: 1.3rem;
+  color: #4b4b4b;
+}
+.unit__header .btn {
+  padding: 1rem 2rem;
+  font-size: 1.3rem;
+}
+
+.unit__body .services__wrap {
+  padding: 3rem 0 3.5rem;
+  background: #f8f8f8;
+}
+.unit__body .services__wrap-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.unit__body .services__wrap-item-picture {
+  font-size: 2.5rem;
+  transition: all 0.3s ease;
+}
+.unit__body .services__wrap-item-picture:hover {
+  color: #FF7F50;
+}
+.unit__body .services__wrap-item-info {
+  flex: 2;
+  padding-left: 2.5rem;
+}
+.unit__body .services__wrap-item-info-name {
+  font-size: 1.6rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+.unit__body .services__wrap-item-info-name:hover {
+  color: #FF7F50;
+}
+.unit__body .services__wrap-item-info-description {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: grey;
+}
+.unit__body .newsletter__wrap form {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.unit__body .newsletter__wrap-email {
+  height: 48px;
+  flex: 2;
+  border: 1px solid #e0e0e0;
+  outline: none;
+  padding: 0 1.5rem;
+  border-radius: 0;
+}
+.unit__body .newsletter__wrap-btn-send {
+  padding: 0 3rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  height: 48px;
+  border: 0;
+  transition: all 0.3s ease;
+}
+.unit__body .newsletter__wrap-btn-send:hover {
+  background: #FF7F50;
+}
+
+/*# sourceMappingURL=style.css.map */
