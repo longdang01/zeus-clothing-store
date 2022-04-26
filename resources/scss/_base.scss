@@ -58,46 +58,6 @@ ul, li {
     background: $black-color;
 }
 
-.breadcrumb {
-    padding: 1rem 0;
-
-    .breadcrumb-item {
-        
-        &.active {
-            font-weight: 600;
-            color: $primary-color;
-        }
-    }
-}
-
-#scrollUp {
-	right: 10px;
-	z-index: 33;
-	bottom: 10px;
-	text-align: center;
-
-    &:hover i {
-        background: $primary-color;
-	    color:#fff;
-    }
-
-    i {
-        height: 40px;
-        width: 40px;
-        line-height: 40px;
-        background:transparent;
-        background:#222;
-        border-radius: 0;
-        font-size: 18px;
-        -webkit-transition: all 500ms ease;
-        -moz-transition: all 500ms ease;
-        transition: all 500ms ease;
-        display:block;
-        color: #fff;
-        box-shadow: 0px 4px 19px #00000038;
-    }
-}
-
 .btn-watch-more {
     @include flex(center);
     background: $white-color;
@@ -125,3 +85,58 @@ ul, li {
         transition: transform .3s ease;
     }
 }
+
+/* Preloader */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999999999;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.preloader-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+
+.preloader-icon {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    padding: 0px;
+}
+
+.preloader-icon span {
+    position: absolute;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    background: $primary-color;
+    -webkit-animation: preloader-fx 1.6s linear infinite;
+    animation: preloader-fx 1.6s linear infinite;
+}
+
+.preloader-icon span:last-child {
+    animation-delay: -0.8s;
+    -webkit-animation-delay: -0.8s;
+}
+
+@keyframes preloader-fx {
+    0% {transform: scale(0, 0); opacity:0.5;}
+    100% {transform: scale(1, 1); opacity:0;}
+}
+
+@-webkit-keyframes preloader-fx {
+    0% {-webkit-transform: scale(0, 0); opacity:0.5;}
+    100% {-webkit-transform: scale(1, 1); opacity:0;}
+}
+/* End Preloader */

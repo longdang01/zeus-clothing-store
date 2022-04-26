@@ -17,7 +17,7 @@
                         <div class="col-lg-12">
                             <div class="mini__cart-item">
                                 <a href="#">
-                                    <img src="./upload/product/product.jpg" class="mini__cart-item-picture" />
+                                    <img src="" class="mini__cart-item-picture" />
                                 </a>
                                 <div class="mini__cart-item-info">
                                     <a href="#">Hades T-shirt</a>
@@ -32,7 +32,7 @@
                         <div class="col-lg-12">
                             <div class="mini__cart-item">
                                 <a href="#">
-                                    <img src="./upload/product/product.jpg" class="mini__cart-item-picture" />
+                                    <img src="" class="mini__cart-item-picture" />
                                 </a>
                                 <div class="mini__cart-item-info">
                                     <a href="#">Hades T-shirt</a>
@@ -47,7 +47,7 @@
                         <div class="col-lg-12">
                             <div class="mini__cart-item">
                                 <a href="#">
-                                    <img src="./upload/product/product.jpg" class="mini__cart-item-picture" />
+                                    <img src="" class="mini__cart-item-picture" />
                                 </a>
                                 <div class="mini__cart-item-info">
                                     <a href="#">Hades T-shirt</a>

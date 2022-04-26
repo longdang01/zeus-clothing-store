@@ -1,68 +1,254 @@
 @extends('client.shared.layout')
 @section('content')
 
-<section class="product__list">
+<section ng-app="App" ng-controller="ProductController" class="product__list">
     <div class="container">
         <div class="product__list-wrap">
             <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Sản phẩm</li>
-                </ol>
+                <div class="breadcrumb__wrap">
+                    <p>Cửa hàng</p>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                        <li class="breadcrumb-item active"><a href="#">Cửa hàng</a></li>
+                    </ol>
+                </div>
             </nav>
 
             <div class="product__list-wrap-main">
-                <div class="row">
+                <div class="product__list-wrap-main-header">
+                    <p>Hiển thị 9 / 100 sản phẩm</p>
+                    <div>
+                        <div>
+                            <label for="">Sắp xếp theo: </label>
+                            <select class="main__header-option-select">
+                                <option data-display="Mặc định">Mặc định</option>
+                                <option value="">Tên từ A - Z</option>
+                                <option value="">Tên từ Z - A</option>
+                                <option value="">Giá tăng dần</option>
+                                <option value="">Giá giảm dần</option>
+                            </select>
+                        </div>
+                        <div>
+                            <select class="main__header-option-select main__header-option-select--display">
+                                <option data-display="">9</option>
+                                <option value="15">15</option>
+                                <option value="25">25</option>
+                                <option value="30">30</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row product__list-wrap-main-body">
                     <div class="col-lg-3">
                         <div class="left__item">
-                            <h3 class="left__item-header">Phân loại</h3>
-                            <div class="left__item-body">
-                                <div class="accordion accordion-flush" id="accordionFlushExample">
+                            <div class="left__item-header">
+                                <span>Danh mục</span>    
+
+                                <a data-bs-toggle="collapse" 
+                                href="#collapseGroupCategory" role="button" 
+                                aria-expanded="false" 
+                                aria-controls="collapseGroupCategory">
+                                    <i class="ti-plus"></i>
+                                </a>
+                            </div>
+                            <div class="left__item-body collapse show" id="collapseGroupCategory">
+                                <div class="accordion accordion-flush" id="accordionFlushExample1">
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="flush-headingOne">
-                                            <a href="#" class="accordion-button collapsed" type="button" 
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" 
-                                            aria-expanded="false" aria-controls="flush-collapseOne">
-                                                Tất cả sản phẩm
-                                            </a>
+                                            <div>
+                                                <a
+                                                href="#"
+                                                class="accordion-button collapsed collapsed-disabled" 
+                                                type="button" 
+                                                data-bs-toggle="collapse" 
+                                                data-bs-target="#flush-collapseNewArrival" aria-expanded="false" 
+                                                aria-controls="flush-collapseNewArrival">
+                                                    New arrival
+                                                </a>
+                                            </div>
                                         </h2>
-                                        <div id="flush-collapseOne" class="accordion-collapse collapse" 
-                                        aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                        <div id="flush-collapseNewArrival" class="accordion-collapse collapse" 
+                                        aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample1">
                                             <div class="accordion-body p-0">
-                                                abc
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingOne">
+                                            <div>
+                                                <a
+                                                href="#"
+                                                class="accordion-button collapsed collapsed-disabled" 
+                                                type="button" 
+                                                data-bs-toggle="collapse" 
+                                                data-bs-target="#flush-collapseBestSeller" aria-expanded="false" 
+                                                aria-controls="flush-collapseBestSeller">
+                                                    Best Seller
+                                                </a>
+                                            </div>
+                                        </h2>
+                                        <div id="flush-collapseBestSeller" class="accordion-collapse collapse" 
+                                        aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample1">
+                                            <div class="accordion-body p-0">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingOne">
+                                            <div>
+                                                <a
+                                                href="#"
+                                                class="accordion-button collapsed collapsed-disabled" 
+                                                type="button" 
+                                                data-bs-toggle="collapse" 
+                                                data-bs-target="#flush-collapseSale" aria-expanded="false" 
+                                                aria-controls="flush-collapseSale">
+                                                    Sale
+                                                </a>
+                                            </div>
+                                        </h2>
+                                        <div id="flush-collapseSale" class="accordion-collapse collapse" 
+                                        aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample1">
+                                            <div class="accordion-body p-0">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="left__item">
+                            <div class="left__item-header">
+                                <span>Phân loại</span>    
+
+                                <a data-bs-toggle="collapse" 
+                                href="#collapseCategory" role="button" 
+                                aria-expanded="false" 
+                                aria-controls="collapseCategory">
+                                    <i class="ti-plus"></i>
+                                </a>
+                            </div>
+                            <div class="left__item-body collapse show" id="collapseCategory">
+                                <div class="accordion accordion-flush" id="accordionFlushExample2">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingOne">
+                                            <div>
+                                                <a
+                                                href="#"
+                                                class="accordion-button collapsed collapsed-disabled" 
+                                                type="button" 
+                                                data-bs-toggle="collapse" 
+                                                data-bs-target="#flush-collapseAll" aria-expanded="false" 
+                                                aria-controls="flush-collapseAll">
+                                                    Tất cả sản phẩm
+                                                </a>
+                                            </div>
+                                        </h2>
+                                        <div id="flush-collapseAll" class="accordion-collapse collapse" 
+                                        aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample2">
+                                            <div class="accordion-body p-0">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="flush-headingTwo">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                            Nam
-                                        </button>
+                                            <div>
+                                                <button class="accordion-button collapsed" 
+                                                type="button" 
+                                                data-bs-toggle="collapse" 
+                                                data-bs-target="#flush-collapseMan" aria-expanded="false" 
+                                                aria-controls="flush-collapseMan">
+                                                    Áo
+                                                </button>
+                                            </div>
                                         </h2>
-                                        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+                                        <div id="flush-collapseMan" class="accordion-collapse collapse"
+                                         aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample2">
+                                            <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
                                         </div>
                                     </div>
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="flush-headingThree">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                                            Nữ
-                                        </button>
+                                            <div>
+                                                <button class="accordion-button collapsed" 
+                                                type="button" 
+                                                data-bs-toggle="collapse" 
+                                                data-bs-target="#flush-collapseWoman" aria-expanded="false" 
+                                                aria-controls="flush-collapseThree">
+                                                    Quần
+                                                </button>
+                                            </div>
                                         </h2>
-                                        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+                                        <div id="flush-collapseWoman" class="accordion-collapse collapse" 
+                                        aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample2">
+                                            <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-9"></div>
+                    <div class="col-lg-9">
+                        <div class="row">
+
+                            <div dir-paginate="product in products | itemsPerPage:pageSize | filter: keySearch"
+                            current-page="currentPage"
+                            class="col-lg-4">
+                                <div class="product__wrap">
+                                    <div class="product__wrap-img">
+                                        <a href="#">
+                                            <img ng-src="@{{ product.color[0].avatar }}"
+                                            class="product__img">
+                                        </a>
+        
+                                        <div class="product__options-wrap">
+                                            <div class="product__options">
+                                                <a href="javascript:void(0)" class="product__options-add-to-cart">
+                                                    Thêm vào giỏ hàng
+                                                    <i class="fa-solid fa-arrow-right"></i>
+                                                </a>
+                                                <div class="product__options-child">
+                                                    <a href="#" 
+                                                    ng-click="goQuickView(product)"
+                                                    class="btn-quick-view" data-bs-toggle="modal"
+                                                    data-bs-target="#quickView"><i class="ti-eye"></i></a>
+                                                    <a href="#" class="btn-add-favorites"><i class="ti-heart"></i></a>
+                                                    <a href="#" class="btn-add-compare"><i class="ti-location-arrow"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="product__wrap-info">
+                                        <a 
+                                        ng-click="goDetail(product)"
+                                        href='@{{ url }}' class="product__name">
+                                            @{{ product.product_name }}
+                                        </a>
+                                        <span class="product__price">@{{ product.price.price | currency:"":0}} VNĐ</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                           
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <dir-pagination-controls 
+                                max-size="10" 
+                                direction-links="true"
+                                boundary-links="true"
+                                >
+                            </dir-pagination-controls>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
 </section>
+
+<script src="/assets/client/dist/controllers/ProductController.js"></script>
 
 @stop

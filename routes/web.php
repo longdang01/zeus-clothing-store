@@ -15,4 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () { return view('client.home.index'); });
 Route::get('/home', function () { return view('client.home.index'); });
-Route::get('/product', function () { return view('client.product.index'); });
+Route::get('/products', function() { return view('client.product.index'); });
+Route::get('/products/{name}', function() { return view('client.detail.index'); });
+
+// Route::get('/product', function () { return view('client.product.index'); });

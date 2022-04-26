@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
+use App\Models\Product;
+use App\Models\SubCategory;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -14,7 +18,14 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = [
+            Product::with('subCategory')
+            ->with('supplier')->with('brand')
+            ->with('price')->with('color')->with('size')
+            ->get()
+        ];
+
+        return $products;
     }
 
     /**
@@ -46,7 +57,11 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::with('subCategory')
+        ->with('supplier')->with('brand')
+        ->with('price')->with('color')->with('size')
+        ->findOrFail($id);
+        return $product;
     }
 
     /**

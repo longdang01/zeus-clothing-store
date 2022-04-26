@@ -1,18 +1,127 @@
 
+
+/*=======================
+    Modal
+=========================*/ 
+.modal-open {
+    overflow-y: scroll !important;
+}
+
+body.modal-open {
+    padding-right: 0 !important;
+}
+
+/*=======================
+    Breadcrumb
+=========================*/ 
+.breadcrumb__wrap {
+    @include flex(space-between);
+    padding: 1rem 0;
+
+    p {
+        font-weight: bold;
+        color: $primary-color;
+    }
+
+    .breadcrumb {
+
+        &-item.active {
+            color: $primary-color;
+            font-weight: bold;
+        }
+    }
+    p, ol.breadcrumb {
+        margin-bottom: 0;
+        // font-weight: bold;
+    }
+
+}
+
+/*=======================
+    ScrollUp
+=========================*/ 
+#scrollUp {
+	right: 10px;
+	z-index: 33;
+	bottom: 10px;
+	text-align: center;
+
+    &:hover i {
+        background: $primary-color;
+	    color:#fff;
+    }
+
+    i {
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+        background:transparent;
+        background:#222;
+        border-radius: 0;
+        font-size: 18px;
+        -webkit-transition: all 500ms ease;
+        -moz-transition: all 500ms ease;
+        transition: all 500ms ease;
+        display:block;
+        color: #fff;
+        box-shadow: 0px 4px 19px #00000038;
+    }
+}
+
+
+/*=======================
+    Collapse
+=========================*/ 
+@media (prefers-reduced-motion: reduce) {
+    .collapsing {
+        transition-property: height, visibility;
+        transition-duration: .35s;
+    }
+}
+
 /*=======================
     Accordion
 =========================*/ 
 .accordion {
 
+    &#accordionFlushExample1 &-button.collapsed-disabled::after {
+        display: none;
+    }
+
     &-item {
         border: 0;
     }
 
+    &-header {
+        
+        & > div {
+            // padding: 1.5rem 0;
+        }
+    }
+
     &-button {
 
-        font-size: 1.4rem;
-        font-weight: 600;
         padding: 1.5rem 0;
+        font-size: 1.4rem;
+        // font-weight: 600;
+
+        &.collapsed-disabled {
+
+            &:focus:not(.collapsed)::after {
+                background-image: none !important;
+            }
+
+            &:not(.collapsed)::after {
+                transform: none;
+                background-image: none !important;
+            }
+
+            &::after {
+                font-family: "FontAwesome";
+                content: '\f061';
+                background-image: none;
+            }
+        }
 
         &:not(.collapsed) {
             color: $primary-color;

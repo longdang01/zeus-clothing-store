@@ -37,20 +37,21 @@
         </div>
         <div class="unit__body">
             <ul class="nav nav-pills">
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="#newarrival-all" class="nav-link active" 
                     data-bs-toggle="tab">Tất cả sản phẩm</a>
-                </li>
+                </li> -->
                 <li class="nav-item">
-                    <a href="#newarrival-man" class="nav-link" data-bs-toggle="tab">Nam</a>
+                    <a href="#newarrival-man" class="nav-link active" data-bs-toggle="tab">Nam</a>
                 </li>
                 <li class="nav-item">
                     <a href="#newarrival-woman" class="nav-link" data-bs-toggle="tab">Nữ</a>
                 </li>
             </ul>
             <div class="tab-content">
-                <div class="tab-pane fade show active" id="newarrival-all">
-
+                <!-- <div class="tab-pane fade show active" id="newarrival-all">
+                </div> -->
+                <div class="tab-pane fade show active" id="newarrival-man">
                     <div class="unit__main owl-carousel owl-theme">
                         <div class="item">
                             <div class="product__wrap">
@@ -166,9 +167,6 @@
                         </div>
                         
                     </div>
-                </div>
-                <div class="tab-pane fade" id="newarrival-man">
-                    <p>Profile tab content ...</p>
                 </div>
                 <div class="tab-pane fade" id="newarrival-woman">
                     <p>Messages tab content ...</p>
@@ -230,20 +228,21 @@
         </div>
         <div class="unit__body">
             <ul class="nav nav-pills">
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="#bestseller-all" class="nav-link active" 
                     data-bs-toggle="tab">Tất cả sản phẩm</a>
-                </li>
+                </li> -->
                 <li class="nav-item">
-                    <a href="#bestseller-man" class="nav-link" data-bs-toggle="tab">Nam</a>
+                    <a href="#bestseller-man" class="nav-link active" data-bs-toggle="tab">Nam</a>
                 </li>
                 <li class="nav-item">
                     <a href="#bestseller-woman" class="nav-link" data-bs-toggle="tab">Nữ</a>
                 </li>
             </ul>
             <div class="tab-content">
-                <div class="tab-pane fade show active" id="bestseller-all">
-
+                <!-- <div class="tab-pane fade show active" id="bestseller-all">
+                </div> -->
+                <div class="tab-pane fade show active" id="bestseller-man">
                     <div class="unit__main owl-carousel owl-theme">
                         <div class="item">
                             <div class="product__wrap">
@@ -260,7 +259,7 @@
                                                 <i class="fa-solid fa-arrow-right"></i>
                                             </a>
                                             <div class="product__options-child">
-                                                <a href="#"><i class="ti-eye"></i></a>
+                                                <a href="#" class="btn-quick-view"><i class="ti-eye"></i></a>
                                                 <a href="#"><i class="ti-heart"></i></a>
                                                 <a href="#"><i class="ti-location-arrow"></i></a>
                                             </div>
@@ -357,11 +356,8 @@
                                 </div>
                             </div>
                         </div>
-                        
+                            
                     </div>
-                </div>
-                <div class="tab-pane fade" id="bestseller-man">
-                    <p>Profile tab content ...</p>
                 </div>
                 <div class="tab-pane fade" id="bestseller-woman">
                     <p>Messages tab content ...</p>
@@ -446,20 +442,21 @@
         </div>
         <div class="unit__body">
             <ul class="nav nav-pills">
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="#sale-all" class="nav-link active" 
                     data-bs-toggle="tab">Tất cả sản phẩm</a>
-                </li>
+                </li> -->
                 <li class="nav-item">
-                    <a href="#sale-man" class="nav-link" data-bs-toggle="tab">Nam</a>
+                    <a href="#sale-man" class="nav-link active" data-bs-toggle="tab">Nam</a>
                 </li>
                 <li class="nav-item">
                     <a href="#sale-woman" class="nav-link" data-bs-toggle="tab">Nữ</a>
                 </li>
             </ul>
             <div class="tab-content">
-                <div class="tab-pane fade show active" id="sale-all">
-
+                <!-- <div class="tab-pane fade show active" id="sale-all">
+                </div> -->
+                <div class="tab-pane fade show active" id="sale-man">
                     <div class="unit__main owl-carousel owl-theme">
                         <div class="item">
                             <div class="product__wrap">
@@ -588,11 +585,8 @@
                                 </div>
                             </div>
                         </div>
-                        
+                            
                     </div>
-                </div>
-                <div class="tab-pane fade" id="sale-man">
-                    <p>Profile tab content ...</p>
                 </div>
                 <div class="tab-pane fade" id="sale-woman">
                     <p>Messages tab content ...</p>

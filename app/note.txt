@@ -32,7 +32,6 @@
 php artisan make:model Brand
 php artisan make:model Supplier
 php artisan make:model Category
-php artisan make:model Customer
 php artisan make:model Role
 php artisan make:model Position
 php artisan make:model Color
@@ -46,6 +45,8 @@ php artisan make:model Image
 php artisan make:model Promotion
 php artisan make:model Stock
 php artisan make:model Users
+php artisan make:model Staff
+php artisan make:model Customer
 php artisan make:model News
 php artisan make:model Orders
 php artisan make:model OrdersDetail
@@ -56,6 +57,29 @@ php artisan make:model CartDetail
 
 
 
-
+php artisan make:controller api/BrandController --resource
+php artisan make:controller api/SupplierController --resource
+php artisan make:controller api/CategoryController --resource
+php artisan make:controller api/RoleController --resource
+php artisan make:controller api/PositionController --resource
+php artisan make:controller api/ColorController --resource
+php artisan make:controller api/SizeController --resource
+php artisan make:controller api/PaymentController --resource
+php artisan make:controller api/TransportController --resource
+php artisan make:controller api/SubCategoryController --resource
 php artisan make:controller api/ProductController --resource
+php artisan make:controller api/PriceController --resource
+php artisan make:controller api/ImageController --resource
+php artisan make:controller api/PromotionController --resource
+php artisan make:controller api/StockController --resource
+php artisan make:controller api/UsersController --resource
+php artisan make:controller api/StaffController --resource
+php artisan make:controller api/CustomerController --resource
+php artisan make:controller api/NewsController --resource
+php artisan make:controller api/OrdersController --resource
+php artisan make:controller api/OrdersDetailController --resource
+php artisan make:controller api/InvoiceController --resource
+php artisan make:controller api/InvoiceDetailController --resource
+php artisan make:controller api/CartController --resource
+php artisan make:controller api/CartDetailController --resource
 

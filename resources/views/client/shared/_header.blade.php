@@ -50,11 +50,13 @@
                         <div class="header__tools-search-bar">
                             <select class="search-bar--select">
                                 <option data-display="Tất cả sản phẩm">Tất cả sản phẩm</option>
-                                <option value="1">Sản phẩm nam</option>
-                                <option value="2">Sản phẩm nữ</option>
+                                <!-- <option value="1">Sản phẩm nam</option>
+                                <option value="2">Sản phẩm nữ</option> -->
                             </select>
-                            <form action="#">
-                                <input type="text" id="keySearch" name="keySearch" placeholder="Tìm kiếm sản phẩm tại đây ...">
+                            <form action="#" ng-controller="ProductController">
+                                <input type="text" id="keySearch" name="keySearch"
+                                ng-model="keySearch"
+                                placeholder="Tìm kiếm sản phẩm tại đây ...">
                                 <button type="submit" class="btn btn-search">
                                     <i class="ti-search"></i>
                                 </button>
@@ -124,25 +126,31 @@
                         </h3>
                         <ul class="header__navbar-item-dropdown">
                             <li>
-                                <a href="#">New Arrivals<i class="fa-solid fa-angle-right"></i></a>
+                                <a href="#">New Arrivals
+                                    <!-- <i class="fa-solid fa-angle-right"></i> -->
+                                </a>
                                 <ul class="header__navbar-item-dropdown-child dropdown-child-right">
-                                    <li><a href="#">Tất cả sản phẩm</a></li>
-                                    <li><a href="#">Sản phẩm nam</a></li>
-                                    <li><a href="#">Sản phẩm nữ</a></li>
+                                    <!-- <li><a href="#">Tất cả sản phẩm</a></li> -->
+                                    <!-- <li><a href="#">Nam</a></li>
+                                    <li><a href="#">Nữ</a></li> -->
                                 </ul>
                             </li>
-                            <li><a href="#">Best Selling<i class="fa-solid fa-angle-right"></i></a>
+                            <li><a href="#">Best Selling
+                                <!-- <i class="fa-solid fa-angle-right"></i> -->
+                            </a>
                                 <ul class="header__navbar-item-dropdown-child dropdown-child-right">
-                                    <li><a href="#">Tất cả sản phẩm</a></li>
-                                    <li><a href="#">Sản phẩm nam</a></li>
-                                    <li><a href="#">Sản phẩm nữ</a></li>
+                                    <!-- <li><a href="#">Tất cả sản phẩm</a></li> -->
+                                    <!-- <li><a href="#">Nam</a></li>
+                                    <li><a href="#">Nữ</a></li> -->
                                 </ul>
                             </li>
-                            <li><a href="#">Sale<i class="fa-solid fa-angle-right"></i></a>
+                            <li><a href="#">Sale
+                                <!-- <i class="fa-solid fa-angle-right"></i> -->
+                            </a>
                                 <ul class="header__navbar-item-dropdown-child dropdown-child-right">
-                                    <li><a href="#">Tất cả sản phẩm</a></li>
-                                    <li><a href="#">Sản phẩm nam</a></li>
-                                    <li><a href="#">Sản phẩm nữ</a></li>
+                                    <!-- <li><a href="#">Tất cả sản phẩm</a></li> -->
+                                    <!-- <li><a href="#">Nam</a></li>
+                                    <li><a href="#">Nữ</a></li> -->
                                 </ul>
                             </li>
                         </ul>
@@ -158,9 +166,9 @@
                                 <i class="fa-solid fa-angle-down"></i>
                             </a>
                             <ul class="header__navbar-item-dropdown">
-                                <li><a href="#">Tất cả sản phẩm</a></li>
-                                <li><a href="#">Sản phẩm dành cho nam</a></li>
-                                <li><a href="#">Sản phẩm dành cho nữ</a></li>
+                                <!-- <li><a href="#">Tất cả sản phẩm</a></li> -->
+                                <!-- <li><a href="#">Nam</a></li>
+                                <li><a href="#">Nữ</a></li> -->
                             </ul>
                         </li><li class="header__navbar-item">
                             <a href="#" class="header__navbar-item-link">
