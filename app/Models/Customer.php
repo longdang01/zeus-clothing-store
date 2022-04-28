@@ -11,4 +11,9 @@ class Customer extends Model
 
     protected $table = 'customer';
 
+    public function users() {
+        
+        return $this->hasOne(Users::class);
+    }
+
 }

@@ -528,6 +528,29 @@
                 }
 
                 &-body {
+                    .accordion-body {
+                        padding: 0;
+                    
+                        nav {
+                            a {
+                                border: 1px solid $black-color;
+                                border-radius: 3px;
+                                color: $black-color;
+                                margin-bottom: 1rem;
+                                transition: all .3s ease;
+                                
+                                &:hover {
+                                    background: $black-color;
+                                    color: $white-color;
+                                }
+
+                                &.active {
+                                    background: $black-color;
+                                    color: $white-color;
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }

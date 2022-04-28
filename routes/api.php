@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\api\CategoryController;
 use App\Http\Controllers\api\ProductController;
 use App\Http\Controllers\api\StockController;
+use App\Http\Controllers\api\SubCategoryController;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,5 +25,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::resource('products', ProductController::class);
 
+Route::get('collections/all', [ProductController::class, 'getProducts']);
+
+
+Route::resource('categories', CategoryController::class);
+Route::resource('subcategories', SubCategoryController::class);
+
+
+
+//[ not used ]
 Route::resource('stocks', StockController::class);
 

@@ -16,21 +16,28 @@
 
             <div class="product__list-wrap-main">
                 <div class="product__list-wrap-main-header">
-                    <p>Hiển thị 9 / 100 sản phẩm</p>
+                    <p>Hiển thị @{{ pageSize }} / @{{ products.length }} sản phẩm</p>
                     <div>
                         <div>
-                            <label for="">Sắp xếp theo: </label>
-                            <select class="main__header-option-select">
-                                <option data-display="Mặc định">Mặc định</option>
-                                <option value="">Tên từ A - Z</option>
-                                <option value="">Tên từ Z - A</option>
-                                <option value="">Giá tăng dần</option>
-                                <option value="">Giá giảm dần</option>
+                            <label style="min-width: 90px" for="">Sắp xếp theo: </label>
+
+                            <select 
+                                class="main__header-option-select form-select"
+                                style="height: 48px; font-size: 1.4rem; padding-right: 4.5rem; margin-left: 1rem"
+                                name="sort"  
+                                ng-change="sortBy()" ng-model="valueSort">
+                                <option value="" selected>Mặc định</option>
+                                <option value="price.price|Ascending">Giá tăng dần</option>
+                                <option value="price.price|Descending">Giá giảm dần</option>
                             </select>
                         </div>
                         <div>
-                            <select class="main__header-option-select main__header-option-select--display">
-                                <option data-display="">9</option>
+                            <select 
+                            style="height: 48px; font-size: 1.4rem; padding-right: 4.5rem; margin-left: 1rem"
+                            class="main__header-option-select main__header-option-select--display form-select"
+                            ng-model="pageSize" ng-init="pageSize='9'"
+                            >
+                                <option value="9" selected>9</option>
                                 <option value="15">15</option>
                                 <option value="25">25</option>
                                 <option value="30">30</option>
@@ -51,7 +58,7 @@
                                     <i class="ti-plus"></i>
                                 </a>
                             </div>
-                            <div class="left__item-body collapse show" id="collapseGroupCategory">
+                            <div class="left__item-body collapse" id="collapseGroupCategory">
                                 <div class="accordion accordion-flush" id="accordionFlushExample1">
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="flush-headingOne">
@@ -152,24 +159,42 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="accordion-item">
+                                    <div ng-repeat="category in categories" class="accordion-item">
                                         <h2 class="accordion-header" id="flush-headingTwo">
-                                            <div>
-                                                <button class="accordion-button collapsed" 
+                                            <div style="display: flex; align-items: center; justify-content: space-between">
+                                                <a 
+                                                ng-click="filterCategory(category, 1)"
+                                                href="javascript:void(0)"
+                                                style="display: inline-block; font-size: 1.4rem; color: black; flex: 2" >
+                                                @{{ category.category_name }}</a>
+                                                <button 
+                                                style="width: auto"
+                                                class="accordion-button collapsed" 
                                                 type="button" 
                                                 data-bs-toggle="collapse" 
-                                                data-bs-target="#flush-collapseMan" aria-expanded="false" 
-                                                aria-controls="flush-collapseMan">
-                                                    Áo
+                                                data-bs-target="#collapseCategory@{{ category.id }}" aria-expanded="false" 
+                                                aria-controls="flush-collapse">
+                                                    
                                                 </button>
                                             </div>
                                         </h2>
-                                        <div id="flush-collapseMan" class="accordion-collapse collapse"
+                                        <div id="collapseCategory@{{ category.id }}" class="accordion-collapse collapse"
                                          aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample2">
-                                            <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+                                            <div class="accordion-body">
+                                                <nav class="nav flex-column">
+                                                    <a 
+                                                    ng-repeat="subcategory in category.sub_category" 
+                                                    ng-click="filterCategory(category, 2)"
+                                                    href="#"
+                                                    data-bs-toggle="tab" 
+                                                    class="nav-link" aria-current="page" >
+                                                    @{{ subcategory.sub_category_name }}
+                                                    </a>
+                                                </nav>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="accordion-item">
+                                    <!-- <div class="accordion-item">
                                         <h2 class="accordion-header" id="flush-headingThree">
                                             <div>
                                                 <button class="accordion-button collapsed" 
@@ -185,7 +210,7 @@
                                         aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample2">
                                             <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -193,7 +218,8 @@
                     <div class="col-lg-9">
                         <div class="row">
 
-                            <div dir-paginate="product in products | itemsPerPage:pageSize | filter: keySearch"
+                            <div dir-paginate="product in products |
+                            orderBy:sortColumn:reverse | itemsPerPage:pageSize | filter: keySearch"
                             current-page="currentPage"
                             class="col-lg-4">
                                 <div class="product__wrap">
@@ -205,7 +231,9 @@
         
                                         <div class="product__options-wrap">
                                             <div class="product__options">
-                                                <a href="javascript:void(0)" class="product__options-add-to-cart">
+                                                <a 
+                                                href="javascript:void(0)"
+                                                class="product__options-add-to-cart">
                                                     Thêm vào giỏ hàng
                                                     <i class="fa-solid fa-arrow-right"></i>
                                                 </a>

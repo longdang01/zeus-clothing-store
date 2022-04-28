@@ -22,15 +22,15 @@
                             <i class="ti-alarm-clock"></i>
                             <a href="#">Đơn hàng của bạn</a>
                         </li></li><li class="header__topbar-list-item">
-                            <i class="fa-solid fa-hand-sparkles"></i>
-                            <span>Hi, Long Dang</span>
-                        </li>
-                        <!-- <li class="header__topbar-list-item">
                             <i class="ti-power-off"></i>
-                            <a href="#">Đăng nhập</a>
+                            <a href="/customers/login">Đăng nhập</a>
                         </li><li class="header__topbar-list-item">
                             <i class="ti-id-badge"></i>
-                            <a href="#">Đăng ký</a>
+                            <a href="/customers/register">Đăng ký</a>
+                        </li>
+                        <!-- <li class="header__topbar-list-item">
+                            <i class="fa-solid fa-hand-sparkles"></i>
+                            <span>Hi, Long Dang</span>
                         </li> -->
                         
                     </ul>
@@ -66,11 +66,11 @@
                 </div>
                 <div class="col-lg-2">
                     <ul class="header__tools-general">
-                        <li>
+                        <li ng-controller="CartController">
                             <a href="#" class="header__tools-general-cart"
                             data-bs-toggle="modal" data-bs-target="#miniCart">
                                 <i class="ti-bag"></i>
-                                <span>0</span>
+                                <span>@{{ totalCart }}</span>
                             </a>
                         </li>
                         <li class="header__tools-general-user dropdown">
@@ -175,8 +175,8 @@
                                 Shop
                                 <span class="header__navbar-item-link--dot"></span>
                             </a>
-                            <ul class="header__navbar-item-dropdown">
-                                <li><a href="#">Xem giỏ hàng (0 sản phẩm)</a></li>
+                            <ul class="header__navbar-item-dropdown" ng-controller="CartController">
+                                <li><a href="#">Xem giỏ hàng (@{{ totalCart }} sản phẩm)</a></li>
                                 <li><a href="#">Thanh toán</a></li>
                             </ul>
                         </li><li class="header__navbar-item">
@@ -212,3 +212,4 @@
         </div>
     </nav>
 </header>
+<script src="/assets/client/dist/controllers/CartController.js"></script>

@@ -1,0 +1,69 @@
+.login-wrap {
+    position: relative;
+    background: #fff;
+    border-radius: 10px;
+    margin-top: 6.5rem;
+
+    & .icon {
+        width: 80px;
+        height: 80px;
+        background: $primary-color;
+        border-radius: 50%;
+        font-size: 30px;
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+
+    & .icon i {
+        color: #fff;
+    }
+
+    & h3 {
+        font-weight: 700;
+        font-size: 20px;
+        color: $black-color;
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+    .form-control {
+        height: 48px;
+        background: rgba(0,0,0,.05);
+        color: #000;
+        font-size: 1.4rem;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border: 1px solid transparent;
+        padding-left: 20px;
+        padding-right: 20px;
+        -webkit-transition: all .2s ease-in-out;
+        -o-transition: all .2s ease-in-out;
+        transition: all .2s ease-in-out;
+    }
+
+    .rounded-left {
+        border-top-left-radius: .25rem!important;
+        border-bottom-left-radius: .25rem!important;
+    }
+
+    .checkbox-wrap {
+        @include flex(flex-start);
+    }
+
+    button {
+        display: block;
+        width: 100%;
+        font-size: 1.4rem;
+        font-weight: 600;
+        background: #d36942;
+        border: 0;
+        transition: all .3s ease;
+
+        &:hover {
+            background: #d36942;
+        }
+        
+    }
+}

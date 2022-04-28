@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 
 class SubCategoryController extends Controller
@@ -14,7 +15,12 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $subCategories = [
+            SubCategory::with('category')
+            ->get()
+        ];
+        
+        return $subCategories;
     }
 
     /**

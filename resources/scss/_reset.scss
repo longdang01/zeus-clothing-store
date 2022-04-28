@@ -12,6 +12,25 @@ body.modal-open {
 }
 
 /*=======================
+    Pagination
+=========================*/ 
+.pagination {
+    li {
+
+        &.active {
+            border: 1px solid #d6d6d6;
+        }
+
+        a {
+            @include flex(center);
+            width: 45px;
+            height: 45px;
+            font-size: 1.4rem;
+        }
+    }
+}
+
+/*=======================
     Breadcrumb
 =========================*/ 
 .breadcrumb__wrap {

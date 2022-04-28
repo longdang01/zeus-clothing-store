@@ -11,4 +11,8 @@ class Category extends Model
 
     protected $table = 'category';
 
+    public function subCategory() {
+        return $this->hasMany(SubCategory::class);
+    }
+
 }

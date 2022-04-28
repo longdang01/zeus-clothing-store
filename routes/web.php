@@ -18,4 +18,8 @@ Route::get('/home', function () { return view('client.home.index'); });
 Route::get('/products', function() { return view('client.product.index'); });
 Route::get('/products/{name}', function() { return view('client.detail.index'); });
 
+
+Route::get('/customers/login', function() { return view('client.customer.login'); });
+Route::get('/customers/register', function() { return view('client.customer.register'); });
+
 // Route::get('/product', function () { return view('client.product.index'); });
