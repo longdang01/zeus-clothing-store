@@ -146,6 +146,7 @@
                                                 href="#"
                                                 class="accordion-button collapsed collapsed-disabled" 
                                                 type="button" 
+                                                ng-click="search(4, all)"
                                                 data-bs-toggle="collapse" 
                                                 data-bs-target="#flush-collapseAll" aria-expanded="false" 
                                                 aria-controls="flush-collapseAll">
@@ -163,7 +164,7 @@
                                         <h2 class="accordion-header" id="flush-headingTwo">
                                             <div style="display: flex; align-items: center; justify-content: space-between">
                                                 <a 
-                                                ng-click="filterCategory(category, 1)"
+                                                ng-click="search(1, category)"
                                                 href="javascript:void(0)"
                                                 style="display: inline-block; font-size: 1.4rem; color: black; flex: 2" >
                                                 @{{ category.category_name }}</a>
@@ -184,7 +185,7 @@
                                                 <nav class="nav flex-column">
                                                     <a 
                                                     ng-repeat="subcategory in category.sub_category" 
-                                                    ng-click="filterCategory(category, 2)"
+                                                    ng-click="search(2, subcategory)"
                                                     href="#"
                                                     data-bs-toggle="tab" 
                                                     class="nav-link" aria-current="page" >
@@ -277,6 +278,6 @@
     </div>
 </section>
 
-<script src="/assets/client/dist/controllers/ProductController.js"></script>
+<!-- <script src="/assets/client/dist/controllers/ProductController.js"></script> -->
 
 @stop

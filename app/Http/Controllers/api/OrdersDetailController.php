@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\OrdersDetail;
 use Illuminate\Http\Request;
 
 class OrdersDetailController extends Controller
@@ -35,7 +36,15 @@ class OrdersDetailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ordersDetail = new OrdersDetail();
+        $ordersDetail->orders_id= $request->orders_id;
+        $ordersDetail->product_id = $request->product_id;
+        $ordersDetail->color_id = $request->color_id;
+        $ordersDetail->size_id = $request->size_id;
+        $ordersDetail->quantity = $request->quantity;
+        $ordersDetail->price = $request->price;
+
+        $ordersDetail->save();
     }
 
     /**
@@ -82,4 +91,6 @@ class OrdersDetailController extends Controller
     {
         //
     }
+
+   
 }

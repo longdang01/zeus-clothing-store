@@ -11,4 +11,19 @@ class Orders extends Model
 
     protected $table = 'orders';
 
+    public function ordersDetails() {
+        return $this->hasMany(OrdersDetail::class);
+    }
+
+    public function customer() {
+        return $this->belongsTo(Customer::class);
+    }
+
+    public function payment() {
+        return $this->belongsTo(Payment::class);
+    }
+
+    public function transport() {
+        return $this->belongsTo(Transport::class);
+    }
 }

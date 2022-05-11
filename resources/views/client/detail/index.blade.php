@@ -121,7 +121,7 @@
                                     <div>
                                         <div class="row">
                                             <div class="col-lg-8">
-                                                <a href="#" 
+                                                <a href="javascript:void(0)" ng-click="addToCart(product)"
                                                 class="content__options-btn 
                                                 content__options-btn-toCart">Thêm vào giỏ hàng</a>
                                             </div>
@@ -135,7 +135,9 @@
                                         </div>
 
                                     </div>
-                                    <a href="#" class="content__options-btn content__options-btn-toCheckout">Mua ngay</a>
+                                    <a href="/checkout" 
+                                    class="content__options-btn
+                                    content__options-btn-toCheckout">Mua ngay</a>
                                 </div>
                             </div>
                         </div>
@@ -175,7 +177,7 @@
                             <span>Xem thêm</span> 
                         </a>
                     </div>
-                    <div class="product__similar-slide owl-carousel owl-theme">
+                    <!-- <div class="product__similar-slide owl-carousel owl-theme">
                         <div class="item">
                             <div class="product__wrap">
                                 <div class="product__wrap-img">
@@ -208,13 +210,13 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<script src="/assets/client/dist/controllers/DetailController.js"></script>
+<!-- <script src="/assets/client/dist/controllers/DetailController.js"></script> -->
 
 @stop

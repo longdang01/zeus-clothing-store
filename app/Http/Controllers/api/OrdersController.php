@@ -3,7 +3,13 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cart;
+use App\Models\CartDetail;
+use App\Models\Orders;
+use App\Models\OrdersDetail;
+use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OrdersController extends Controller
 {
@@ -14,7 +20,14 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        //
+        return Orders::with('ordersDetails')->get();
+    }
+
+    public function getOrders($customer_id) {
+        return Orders::with('ordersDetails', 'ordersDetails.product',
+        'ordersDetails.color', 'ordersDetails.size')->with('customer')->with('payment')
+        ->with('transport')->where('customer_id', $customer_id)
+        ->get();
     }
 
     /**
@@ -35,7 +48,38 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $orders = new Orders();
+        $orders->payment_id= $request->payment_id;
+        $orders->transport_id = $request->transport_id;
+        $orders->customer_id = $request->customer_id;
+        $orders->order_date = new DateTime();
+        $orders->delivery_address = $request->delivery_address;
+        $orders->note = '';
+        $orders->total = $request->total;
+        $orders->status = 1;
+
+        $orders->save();
+
+        $cart = (new CartController)->getCart($request->customer_id);
+        $cartDetails = $cart->cart_details;
+        $cartDetails = $request->cartDetails;
+        
+        // $cart = new Cart();
+        // $cart = $cart->getCart($request->customer_id);
+        foreach( (array) $cartDetails as $item) {
+            $ordersDetail = new OrdersDetail();
+            $ordersDetail->orders_id= $orders->id;
+            $ordersDetail->product_id = $item['product_id'];
+            $ordersDetail->color_id = $item['color_id'];
+            $ordersDetail->size_id = $item['size_id'];
+            $ordersDetail->quantity = $item['quantity'];
+            $ordersDetail->price = $item['price'];
+    
+            $ordersDetail->save();
+        }
+
+        CartDetail::truncate($cart->id);
+
     }
 
     /**
@@ -80,6 +124,7 @@ class OrdersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Orders::findOrFail($id)->delete();
+        DB::table("orders_detail")->where("orders_id", $id)->delete();
     }
 }

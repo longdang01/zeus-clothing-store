@@ -17,6 +17,9 @@ Route::get('/', function () { return view('client.home.index'); });
 Route::get('/home', function () { return view('client.home.index'); });
 Route::get('/products', function() { return view('client.product.index'); });
 Route::get('/products/{name}', function() { return view('client.detail.index'); });
+Route::get('/carts', function() { return view('client.cart.index'); });
+Route::get('/checkout', function() { return view('client.checkout.index'); });
+Route::get('/orders', function() { return view('client.orders.index'); });
 
 
 Route::get('/customers/login', function() { return view('client.customer.login'); });

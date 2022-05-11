@@ -14,18 +14,21 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div ng-repeat="product in carts" class="col-lg-12">
+                        <div ng-repeat="product in cart.cart_details" class="col-lg-12">
                             <div class="mini__cart-item">
                                 <a href="#">
                                     <img ng-src="@{{ product.color.avatar }}" class="mini__cart-item-picture" />
                                 </a>
                                 <div class="mini__cart-item-info">
-                                    <a href="#"></a>
+                                    <a href="#">@{{ product.product.product_name }}</a>
                                     <p>Phân loại: 
                                         @{{ product.color.color_name }}/@{{ product.size.size_name }}/x@{{ product.quantity }}
                                     </p>
                                 </div>
-                                <a href="#" class="btn-delete">
+                                <a
+                                ng-click="removeCartDetail(product)"                                
+                                href="#"
+                                class="btn-delete">
                                     <i class="ti-trash"></i>
                                 </a>
                             </div>
@@ -35,8 +38,16 @@
                 <div class="modal-footer">
                     <p>@{{ totalCart }} sản phẩm</p>
                     <div>
-                        <button type="button" class="btn">Xem giỏ hàng</button>
-                        <button type="button" class="btn">Thanh toán</button>
+                        <a style="background: black;
+                            color: white;
+                            padding: 1rem 1.5rem;
+                            font-size: 1.3rem
+                        " href="/carts" class="btn">Xem giỏ hàng</a>
+                        <a style="background: black;
+                            color: white;
+                            padding: 1rem 1.5rem;
+                            font-size: 1.3rem
+                        " href="/checkout" class="btn">Thanh toán</a>
                     </div>
                 </div>
             </div>

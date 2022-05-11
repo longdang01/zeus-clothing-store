@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\SubCategory;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -22,19 +23,37 @@ class ProductController extends Controller
         $products = Product::with('subCategory')
         ->with('supplier')->with('brand')
         ->with('price')->with('color')->with('size')
+        // ->with(['category' => function($query) {
+        //     $query->where('category.id', 1);
+        // }])
         ->get();
 
         return [$products, Category::all()];
     }
 
-    public function getProducts()
+    public function getProducts(Request $request)
     {
-        $products = Product::with('subCategory')
-        ->with('supplier')->with('brand')
-        ->with('price')->with('color')->with('size')
-        ->get();
+        $products = Product::with('subCategory')->with('supplier')->with('brand')
+        ->with('price')->with('color')->with('size');
 
-        return [$products, Category::all()];
+        if($request->product_name) { 
+            $products = $products->where
+            ('product_name', 'LIKE', "%$request->product_name%");
+        }
+
+        if($request->sub_category_id) { 
+            $products = $products->where
+            ('sub_category_id', '=', $request->sub_category_id);
+        }
+
+        if($request->category_id) {
+            $products = $products->whereHas
+            ('subCategory', function($query) use($request) {
+                return $query->where('category_id', $request->category_id);
+            });
+        }
+
+        return $products->get();
     }
     /**
      * Show the form for creating a new resource.

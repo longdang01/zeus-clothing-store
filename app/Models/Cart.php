@@ -11,4 +11,7 @@ class Cart extends Model
 
     protected $table = 'cart';
 
+    public function cartDetails() {
+        return $this->hasMany(CartDetail::class);
+    }
 }

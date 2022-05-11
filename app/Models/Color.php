@@ -11,4 +11,8 @@ class Color extends Model
 
     protected $table = 'color';
 
+    public function sizes() {
+        return $this->hasMany(Size::class);
+    }
+
 }

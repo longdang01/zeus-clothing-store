@@ -65,7 +65,7 @@
                                                             <a 
                                                             ng-click="changeColor(color, $index)"
                                                             ng-class="color.id == selectedColor.id ? 'selected' : ''"
-                                                            class="dropdown-item" href="#">
+                                                            class="dropdown-item" href="javascript:void(0)">
                                                                 @{{ color.color_name }}
                                                             </a>
                                                         </li>
@@ -88,7 +88,7 @@
                                                         <a 
                                                         ng-click="changeSize(size, $index)"
                                                         ng-class="size.id == selectedSize.id ? 'selected' : ''"
-                                                        class="dropdown-item" href="#">
+                                                        class="dropdown-item" href="javascript:void(0)">
                                                             @{{ size.size_name }}
                                                         </a>
                                                     </li>

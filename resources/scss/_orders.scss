@@ -1,0 +1,50 @@
+
+.orders__wrap-main {
+
+    .nav-pills {
+        margin-bottom: 3rem;
+    }
+
+    &-body {
+
+    }
+}
+
+.orders__detail-wrap {
+    
+    .modal-dialog {
+        overflow-y: scroll;
+    }
+
+    .modal-title {
+        font-size: 1.6rem;
+        font-weight: 600;
+    }
+
+    .modal-body {
+
+        label {
+            font-weight: 600;
+            font-size: 1.4rem;
+            min-width: 180px;
+        }
+
+        th {
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        td {
+            vertical-align: middle;
+            padding: 2rem 0;
+            font-size: 1.3rem;
+            text-align: center;
+
+            img {
+                border: 2px solid black;
+            }
+        }
+    }
+
+
+}

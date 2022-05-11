@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\api\CategoryController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -33,5 +34,14 @@ class Product extends Model
 
     public function size() {
         return $this->hasManyThrough(Size::class, Color::class);
+    }
+
+    public function category() {
+        return $this->hasOneThrough(Category::class, SubCategory::class,
+        'id',
+        'id',
+        null,
+        'id',
+        );
     }
 }

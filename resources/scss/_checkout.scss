@@ -1,0 +1,81 @@
+.checkout {
+
+    &__wrap {
+    
+
+        &-main {
+        
+            &-list {
+            
+            }
+            
+            &-header {
+                @include flex(space-between);
+                font-weight: 600;
+            }
+            
+            &-info {
+            
+            }
+        }
+    }
+}
+
+
+.checkout__total {
+    @include flex(space-between);
+    height: 50px;
+    font-size: 1.4rem;
+    font-weight: 600;
+
+    p {
+        margin-bottom: 0;
+    }
+}
+
+.form-control,
+.form-select {
+    height: 50px;
+    font-size: 1.4rem
+}
+
+.btn-apply-coupon,
+.coupon {
+    height: 35px;
+    font-size: 1.4rem
+}
+
+.btn-apply-coupon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1rem;
+    width: 150px;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: black;
+    transition: .5s;
+}
+
+.form-select:focus {
+    box-shadow: none;
+    border-color: #ced4da;
+}
+
+.order-item {
+    margin-bottom: 2.5rem
+}
+
+.order-list {
+    height: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.order-image {
+    height: 50px;
+}
+
+

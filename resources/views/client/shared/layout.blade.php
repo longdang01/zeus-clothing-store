@@ -66,6 +66,9 @@
 
         <!-- [Quick view] -->
         @include('client.shared._quickView')
+
+        <!-- [Orders Detail] -->
+        @include('client.shared._ordersDetail')
     </div>
 
 
@@ -94,6 +97,11 @@
     <!-- App.js -->
     <script src="/assets/client/dist/js/app.js"></script>
 
-
+    <script src="/assets/client/dist/controllers/ProductController.js"></script>
+    <script src="/assets/client/dist/controllers/DetailController.js"></script>
+    <script src="/assets/client/dist/controllers/CustomerController.js"></script>
+    <script src="/assets/client/dist/controllers/CartController.js"></script>
+    <script src="/assets/client/dist/controllers/CheckoutController.js"></script>
+    <script src="/assets/client/dist/controllers/OrdersController.js"></script>
 </body>
 </html>

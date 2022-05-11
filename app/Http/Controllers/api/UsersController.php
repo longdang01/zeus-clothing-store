@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Users;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -14,7 +15,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+        return Users::get();
     }
 
     /**
@@ -35,7 +36,14 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $users = new Users();
+        $users->username = $request->username;
+        $users->password = $request->password;
+        $users->active = 1;
+
+        $users->save();
+
+        return $users;
     }
 
     /**

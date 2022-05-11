@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\CartDetail;
 use Illuminate\Http\Request;
 
 class CartDetailController extends Controller
@@ -46,7 +47,7 @@ class CartDetailController extends Controller
      */
     public function show($id)
     {
-        //
+        return CartDetail::with('product')->with('color')->with('size')->findOrFail($id);
     }
 
     /**
@@ -69,7 +70,11 @@ class CartDetailController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cartDetails = CartDetail::findOrFail($request->id);
+        $cartDetails->quantity = $request->quantity;
+
+        $cartDetails->save();
+        return $cartDetails;
     }
 
     /**
@@ -80,6 +85,10 @@ class CartDetailController extends Controller
      */
     public function destroy($id)
     {
-        //
+        CartDetail::findOrFail($id)->delete();
+    }
+    public function truncate($cart_id)
+    {
+        CartDetail::get()->where('cart_id', $cart_id)->delete();
     }
 }

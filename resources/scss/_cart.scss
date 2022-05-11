@@ -123,9 +123,39 @@
 }
 
 // Cart
-.cart__wrap {
+.cart__wrap, .checkout__wrap {
     min-height: 405px;
+    
+    table>:not(caption)>*>* {
+        border-bottom-width: 0;
+    }
 
+    .content__options {
+
+        &-amount {
+            display: flex;
+            justify-content: center;
+
+            &-item {
+                text-align: center;
+                width: 48px;
+                height: 48px;
+                border: 1px solid #d6d6d6;
+                outline: none;
+                font-size: 1.4rem;
+            }
+
+            .btn-sub, .btn-plus {
+                cursor: pointer;
+            }
+
+            &-value {
+                border-left: 0;
+                border-right: 0;
+            }
+        }
+    }
+    
     table {
 
         thead {
@@ -144,6 +174,7 @@
             td {
                 text-align: center;
                 vertical-align: middle;
+                padding: 2rem 0;
 
                 img {
                     width: 80px;

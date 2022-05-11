@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -14,7 +15,7 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        //
+        return Payment::get();
     }
 
     /**
@@ -46,7 +47,7 @@ class PaymentController extends Controller
      */
     public function show($id)
     {
-        //
+        return Payment::findOrFail($id);
     }
 
     /**

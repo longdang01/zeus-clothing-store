@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Transport;
 use Illuminate\Http\Request;
 
 class TransportController extends Controller
@@ -14,7 +15,7 @@ class TransportController extends Controller
      */
     public function index()
     {
-        //
+        return Transport::get();
     }
 
     /**
@@ -46,7 +47,7 @@ class TransportController extends Controller
      */
     public function show($id)
     {
-        //
+        return Transport::findOrFail($id);
     }
 
     /**

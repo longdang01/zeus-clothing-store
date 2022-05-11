@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
+use App\Models\Users;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -14,7 +16,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        return [Customer::get(), Users::get()];
     }
 
     /**
@@ -24,7 +26,6 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -35,7 +36,24 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $users = new Users();
+        $users->username = $request->username;
+        $users->password = $request->password;
+        $users->active = 1;
+        $users->save();
+
+        $customer = new Customer();
+        $customer->users_id = $users->id;
+        $customer->customer_name = $request->customer_name;
+        $customer->picture = $request->picture;
+        $customer->dob = $request->dob;
+        $customer->address = $request->address;
+        $customer->phone = $request->phone;
+        $customer->email = $request->email;
+
+        $customer->save();
+
+        return $customer;
     }
 
     /**
@@ -46,7 +64,7 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        //
+        return Customer::findOrFail($id);
     }
 
     /**

@@ -3,41 +3,58 @@
 
 
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-lg-6">
-            <div class="login-wrap p-4 p-md-5">
-                <div class="icon d-flex align-items-center justify-content-center">
-                    <i class="ti-user"></i>
+    <nav aria-label="breadcrumb">
+        <div class="breadcrumb__wrap">
+            <p>Trang chủ</p>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                <li class="breadcrumb-item active"><a href="#">Đăng nhập</a></li>
+            </ol>
+        </div>
+    </nav>
+</div>
+
+<section class="shop login section" ng-controller="CustomerController">
+    <div class="container">
+        <div class="row"> 
+            <div class="col-lg-6 offset-lg-3 col-12">
+                <div class="login-form">
+                    <h2>Đăng nhập</h2>
+                    <p>Please register in order to checkout more quickly</p>
+                    <!-- Form -->
+                    <form class="form" method="post" action="#">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label>Username<span>*</span></label>
+                                    <input type="text" ng-model="user.username" name="username" placeholder="" required="required">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label>Mật khẩu<span>*</span></label>
+                                    <input type="password" ng-model="user.password" name="password" placeholder="" required="required">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group login-btn">
+                                    <a href="" ng-click="login()" class="btn">Đăng nhập</a>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="checkbox">
+                                        <label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox">Nhớ mật khẩu</label>
+                                    </div>
+                                    <a href="#" class="lost-pass">Quên mật khẩu?</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!--/ End Form -->
                 </div>
-                <h3 class="text-center mb-4">Đăng nhập</h3>
-                <form action="#" class="login-form">
-                    <div class="form-group">
-                        <input type="text" class="form-control rounded-left" placeholder="Username" required="">
-                    </div>
-                    <div class="form-group d-flex">
-                        <input type="password" class="form-control rounded-left" placeholder="Password" required="">
-                    </div>
-                    <div class="form-group d-md-flex">
-                        <div class="w-50">
-                            <label class="checkbox-wrap checkbox-primary">
-                                <input type="checkbox" checked="">
-                                <span style="padding-left: 1rem">
-                                    Remember Me
-                                </span>
-                            </label>
-                        </div>
-                        <div class="w-50 text-end">
-                            <a href="#">Forgot Password ?</a>
-                        </div>
-                    </div>
-                    <div class="form-group mt-5">
-                        <button type="submit" class="btn btn-primary rounded submit p-3 px-5">Đăng nhập</button>
-                    </div>
-                </form>
             </div>
         </div>
     </div>
+</section>
 
-</div>
-
+<!-- <script src="/assets/client/dist/controllers/CustomerController.js"></script> -->
 @stop

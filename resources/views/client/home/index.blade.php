@@ -18,7 +18,7 @@
         <div class="banner__content">
             <p>Zeus studio</p>
             <h3><span>Create</span> your <span>own</span> style</h3>
-            <a href="#" class="">Shop now!</a>
+            <a href="/products" class="">Shop now!</a>
         </div>
     </div>
 </section>
@@ -41,12 +41,12 @@
                     <a href="#newarrival-all" class="nav-link active" 
                     data-bs-toggle="tab">Tất cả sản phẩm</a>
                 </li> -->
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="#newarrival-man" class="nav-link active" data-bs-toggle="tab">Nam</a>
                 </li>
                 <li class="nav-item">
                     <a href="#newarrival-woman" class="nav-link" data-bs-toggle="tab">Nữ</a>
-                </li>
+                </li> -->
             </ul>
             <div class="tab-content">
                 <!-- <div class="tab-pane fade show active" id="newarrival-all">
@@ -232,12 +232,12 @@
                     <a href="#bestseller-all" class="nav-link active" 
                     data-bs-toggle="tab">Tất cả sản phẩm</a>
                 </li> -->
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="#bestseller-man" class="nav-link active" data-bs-toggle="tab">Nam</a>
                 </li>
                 <li class="nav-item">
                     <a href="#bestseller-woman" class="nav-link" data-bs-toggle="tab">Nữ</a>
-                </li>
+                </li> -->
             </ul>
             <div class="tab-content">
                 <!-- <div class="tab-pane fade show active" id="bestseller-all">
@@ -446,12 +446,12 @@
                     <a href="#sale-all" class="nav-link active" 
                     data-bs-toggle="tab">Tất cả sản phẩm</a>
                 </li> -->
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="#sale-man" class="nav-link active" data-bs-toggle="tab">Nam</a>
                 </li>
                 <li class="nav-item">
                     <a href="#sale-woman" class="nav-link" data-bs-toggle="tab">Nữ</a>
-                </li>
+                </li> -->
             </ul>
             <div class="tab-content">
                 <!-- <div class="tab-pane fade show active" id="sale-all">

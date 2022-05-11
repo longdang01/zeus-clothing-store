@@ -14,24 +14,23 @@
                     </ul>
                 </div>
                 <div class="col-lg-7 text-end">
-                    <ul class="header__topbar-list">
+                    <ul class="header__topbar-list" ng-controller="CustomerController">
                         <li class="header__topbar-list-item">
                             <i class="ti-location-pin"></i>
                             <a href="#">Địa chỉ cửa hàng</a>
                         </li><li class="header__topbar-list-item">
                             <i class="ti-alarm-clock"></i>
                             <a href="#">Đơn hàng của bạn</a>
-                        </li></li><li class="header__topbar-list-item">
+                        </li></li><li ng-if="status == 0" class="header__topbar-list-item">
                             <i class="ti-power-off"></i>
                             <a href="/customers/login">Đăng nhập</a>
-                        </li><li class="header__topbar-list-item">
+                        </li><li ng-if="status == 0" class="header__topbar-list-item">
                             <i class="ti-id-badge"></i>
                             <a href="/customers/register">Đăng ký</a>
-                        </li>
-                        <!-- <li class="header__topbar-list-item">
+                        </li><li ng-if="status == 1" class="header__topbar-list-item">
                             <i class="fa-solid fa-hand-sparkles"></i>
-                            <span>Hi, Long Dang</span>
-                        </li> -->
+                            <span>Hi, @{{ customer.customer_name }}</span>
+                        </li>
                         
                     </ul>
                 </div>
@@ -43,7 +42,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-2">
-                    <a href="#" class="header__brand">Zeus<span>.</span></a>
+                    <a href="/home" class="header__brand">Zeus<span>.</span></a>
                 </div>
                 <div class="col-lg-8">
                     <div class="header__tools-search text-center">
@@ -55,9 +54,12 @@
                             </select>
                             <form action="#" ng-controller="ProductController">
                                 <input type="text" id="keySearch" name="keySearch"
-                                ng-model="keySearch"
+                                ng-model="product_name"
                                 placeholder="Tìm kiếm sản phẩm tại đây ...">
-                                <button type="submit" class="btn btn-search">
+                                <button 
+                                ng-click="search(3, product_name)"
+                                type="submit"
+                                class="btn btn-search">
                                     <i class="ti-search"></i>
                                 </button>
                             </form>    
@@ -66,7 +68,7 @@
                 </div>
                 <div class="col-lg-2">
                     <ul class="header__tools-general">
-                        <li ng-controller="CartController">
+                        <li>
                             <a href="#" class="header__tools-general-cart"
                             data-bs-toggle="modal" data-bs-target="#miniCart">
                                 <i class="ti-bag"></i>
@@ -80,7 +82,7 @@
                                 <i class="ti-user"></i>
                             </a>
                             <ul class="header__navbar-item-dropdown dropdown-menu animate slideIn" 
-                            aria-labelledby="user-dropdown">
+                            aria-labelledby="user-dropdown" ng-controller="CustomerController">
                                 <li>
                                     <a href="#" class="dropdown-item">
                                         <i class="ti-settings"></i>
@@ -88,7 +90,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="dropdown-item">
+                                    <a href="/orders" class="dropdown-item">
                                         <i class="ti-briefcase"></i>
                                         Đơn hàng của bạn
                                     </a>
@@ -100,7 +102,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="dropdown-item">
+                                    <a ng-click="logOut()" href="#" class="dropdown-item">
                                         <i class="ti-power-off"></i>
                                         Đăng xuất
                                     </a>
@@ -175,7 +177,7 @@
                                 Shop
                                 <span class="header__navbar-item-link--dot"></span>
                             </a>
-                            <ul class="header__navbar-item-dropdown" ng-controller="CartController">
+                            <ul class="header__navbar-item-dropdown">
                                 <li><a href="#">Xem giỏ hàng (@{{ totalCart }} sản phẩm)</a></li>
                                 <li><a href="#">Thanh toán</a></li>
                             </ul>
@@ -212,4 +214,7 @@
         </div>
     </nav>
 </header>
+
 <script src="/assets/client/dist/controllers/CartController.js"></script>
+<script src="/assets/client/dist/controllers/CustomerController.js"></script>
+
