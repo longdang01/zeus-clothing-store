@@ -132,7 +132,9 @@
                         padding: 0 1.5rem;
                     }
 
-                    button {
+                    a {
+                        display: grid;
+                        place-items: center;
                         background: $black-color;
                         color: $white-color;
                         font-size: 1.4rem;

@@ -56,12 +56,19 @@
                                 <input type="text" id="keySearch" name="keySearch"
                                 ng-model="product_name"
                                 placeholder="Tìm kiếm sản phẩm tại đây ...">
-                                <button 
+                                <a 
+                                href="/products"
                                 ng-click="search(3, product_name)"
                                 type="submit"
                                 class="btn btn-search">
                                     <i class="ti-search"></i>
-                                </button>
+                                </a>
+                                <!-- <button
+                                ng-click="search(3, product_name)"
+                                type="submit"
+                                class="btn btn-search">
+                                    <i class="ti-search"></i>
+                                </button> -->
                             </form>    
                         </div>
                     </div>

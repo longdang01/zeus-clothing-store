@@ -103,5 +103,6 @@
     <script src="/assets/client/dist/controllers/CartController.js"></script>
     <script src="/assets/client/dist/controllers/CheckoutController.js"></script>
     <script src="/assets/client/dist/controllers/OrdersController.js"></script>
+    <script src="/assets/client/dist/controllers/HomeController.js"></script>
 </body>
 </html>

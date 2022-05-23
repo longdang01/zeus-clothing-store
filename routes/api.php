@@ -46,11 +46,10 @@ Route::resource('orderss', OrdersController::class);
 Route::resource('ordersDetails', OrdersDetailController::class);
 
 Route::get('product/get-products', [ProductController::class, 'getProducts']);
+Route::get('product/get-new', [ProductController::class, 'getNew']);
+Route::get('product/get-best-seller', [ProductController::class, 'getBestSeller']);
 Route::get('cart/get-cart/{customer}', [CartController::class, 'getCart']);
 Route::get('orders/get-orders/{customer}', [OrdersController::class, 'getOrders']);
-
-
-
 
 
 //[ not used ]
