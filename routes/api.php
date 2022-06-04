@@ -12,6 +12,27 @@ use App\Http\Controllers\api\StockController;
 use App\Http\Controllers\api\SubCategoryController;
 use App\Http\Controllers\api\TransportController;
 use App\Http\Controllers\api\UsersController;
+use App\Http\Controllers\api\admin\apicategory;
+use App\Http\Controllers\api\admin\apibrand;
+use App\Http\Controllers\api\admin\apicart;
+use App\Http\Controllers\api\admin\apisub_category;
+use App\Http\Controllers\api\admin\apiprice;
+use App\Http\Controllers\api\admin\apisupplier;
+use App\Http\Controllers\api\admin\apicustomer;
+use App\Http\Controllers\api\admin\apicolor;
+use App\Http\Controllers\api\admin\apinews;
+use App\Http\Controllers\api\admin\apisize;
+use App\Http\Controllers\api\admin\apiproduct;
+use App\Http\Controllers\api\admin\apiorders;
+use App\Http\Controllers\api\admin\apiorders_detail;
+use App\Http\Controllers\api\admin\apiorders_status;
+use App\Http\Controllers\api\admin\apipayment;
+use App\Http\Controllers\api\admin\apiposition;
+use App\Http\Controllers\api\admin\apirole;
+use App\Http\Controllers\api\admin\apistaff;
+use App\Http\Controllers\api\admin\apitransport;
+use App\Http\Controllers\api\admin\apiUpload;
+use App\Http\Controllers\api\admin\apiusers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -50,7 +71,29 @@ Route::get('cart/get-cart/{customer}', [CartController::class, 'getCart']);
 Route::get('orders/get-orders/{customer}', [OrdersController::class, 'getOrders']);
 
 
-
+Route::resource('category',apicategory::class);
+Route::resource('brand',apibrand::class);
+Route::resource('cart',apicart::class);
+Route::resource('customer',apicustomer::class);
+Route::resource('sub_category',apisub_category::class);
+Route::resource('price',apiprice::class);
+Route::resource('supplier',apisupplier::class);
+Route::resource('color',apicolor::class);
+Route::resource('size',apisize::class);
+Route::resource('product',apiproduct::class);
+Route::resource('order',apiorders::class);
+Route::resource('order_detail',apiorders_detail::class);
+Route::resource('order_status',apiorders_status::class);
+Route::resource('staff',apistaff::class);
+Route::resource('position',apiposition::class);
+Route::resource('role',apirole::class);
+Route::resource('user',apiusers::class);
+Route::resource('news',apinews::class);
+Route::resource('payment',apipayment::class);
+Route::resource('position',apiposition::class);
+Route::resource('role',apirole::class);
+Route::resource('transport',apitransport::class);
+Route::post('upload',[apiUpload::class, "uploadFile"]);
 
 
 //[ not used ]

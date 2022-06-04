@@ -25,7 +25,7 @@ class Product extends Model
     } 
 
     public function price() {
-        return $this->hasOne(Price::class);
+        return $this->hasOne(Price::class)->where('active',"1");
     }
 
     public function color() {
