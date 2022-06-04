@@ -28,6 +28,12 @@ Unit, newsletter, services: Homepage
 
 .unit__body {
 
+    .unit__main:not(.orders__wrap-main-body) {
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        gap: 10px;
+    }
+
     .services__wrap {
         padding: 3rem 0 3.5rem;
         background: #f8f8f8;

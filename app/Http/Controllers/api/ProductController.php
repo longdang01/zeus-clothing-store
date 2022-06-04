@@ -26,7 +26,7 @@ class ProductController extends Controller
         // ->with(['category' => function($query) {
         //     $query->where('category.id', 1);
         // }])
-        ->get();
+        ->where('is_active', 1)->get();
 
         return [$products, Category::all()];
     }
@@ -53,7 +53,32 @@ class ProductController extends Controller
             });
         }
 
-        return $products->get();
+        return $products->where('is_active', 1)->get();
+    }
+
+    public function getNew()
+    {
+        $products = Product::with('subCategory')
+        ->with('supplier')->with('brand')
+        ->with('price')->with('color')->with('size')
+        ->where('is_active', 1)->orderBy('created_at', 'desc')->take(8)->get();
+        return $products;
+    }
+
+    public function getBestSeller()
+    {
+        $products = Product::
+        join('orders_detail', 'orders_detail.product_id', '=', 'product.id')
+        ->selectRaw('product.id, product.sub_category_id, product.brand_id,
+        product.supplier_id, product.product_name, SUM(orders_detail.quantity) AS quantity_sold')
+        ->where('is_active', 1)
+        ->groupBy('product.id', 'product.sub_category_id', 'product.brand_id',
+        'product.supplier_id', 'product.product_name') 
+        ->orderByDesc('quantity_sold')
+        ->with('subCategory')->with('supplier')
+        ->with('brand')->with('price')->with('color')->with('size')->take(8)->get();
+
+        return $products;
     }
     /**
      * Show the form for creating a new resource.
@@ -87,7 +112,7 @@ class ProductController extends Controller
         $product = Product::with('subCategory')
         ->with('supplier')->with('brand')
         ->with('price')->with('color')->with('size')
-        ->findOrFail($id);
+        ->findOrFail($id)->where('is_active', 1);
         return $product;
     }
 
