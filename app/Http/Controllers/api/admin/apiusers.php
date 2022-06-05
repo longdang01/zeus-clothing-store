@@ -26,16 +26,13 @@ class apiusers extends Controller
      */
     public function store(Request $request)
     {
-        $user = users::where("username","=",$request->username)->get();
-        if(count($user) > 0){
-            return null;
-        }
         DB::table('users')->insert([
             'username' => $request->username,
             'password' => $request->password,
             'active' => 1
         ]);
-        return users::where("username","=",$request->username)->first();
+        return DB::table("users")
+        ->select("id","username","password")->where("username","=",$request->username)->first();
     }
 
     /**
@@ -46,12 +43,15 @@ class apiusers extends Controller
      */
     public function show($id)
     {
-        if ($id == 'admin'){
-            return users::where('username','=',$id)
-            ->first();
+        return users::findOrFail($id);
+    }
+    public function GetbyUsername(Request $request)
+    {
+        $user = users::with("staff")->where('username','=',$request->username)->first();
+        if ($user!=null){
+            return $user;
         }
-        return users::where('username','=',$id)
-        ->first();
+        return null;
     }
     /**
      * Show the form for editing the specified resource.

@@ -10,5 +10,7 @@ class News extends Model
     use HasFactory;
 
     protected $table = 'news';
-
+    public function staff(){
+        return $this->belongsTo(staff::class,'staff_id');
+    }
 }

@@ -39,7 +39,7 @@ class apistaff extends Controller
     public function store(Request $request)
     {
         DB::table('staff')->insert([
-            'users_id' => $request->users_id,
+            'username' => $request->username,
             'position_id' => $request->position_id,
             'role_id' => $request->role_id,
             'staff_name' => $request->staff_name,
@@ -49,9 +49,8 @@ class apistaff extends Controller
             'phone' => $request->phone,
             'email' => $request->email
         ]);
-        return DB::table('staff')
-        ->select('*')
-        ->orderBy('id', 'desc')
+        return staff::with('users',"role","position")
+        ->where('username','=',$request->username)
         ->first();
     }
 
@@ -91,7 +90,6 @@ class apistaff extends Controller
         DB::table('staff')
               ->where('id', $request->id)
               ->update([
-                'users_id' => $request->users_id,
                 'position_id' => $request->position_id,
                 'role_id' => $request->role_id,
                 'staff_name' => $request->staff_name,

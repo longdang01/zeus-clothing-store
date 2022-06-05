@@ -43,6 +43,7 @@ class apisupplier extends Controller
             'email' => $request->email,
             'description' => $request->description 
         ]);
+        return supplier::orderBy("id","desc")->first();
     }
 
     /**

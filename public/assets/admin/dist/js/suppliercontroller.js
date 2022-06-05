@@ -42,7 +42,8 @@ app.controller('supplier', function($scope, $http) { //tao 1 controller
                 data: $scope.supplier,
                 "content-Type": "application/json"
             }).then(function(response) {
-                $scope.suppliers.push($scope.supplier);
+                $scope.suppliers.push(response.data);
+                $scope.supplier.id=response.data.id
             });
             
         } else { //sua tin

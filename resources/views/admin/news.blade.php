@@ -57,30 +57,24 @@
     <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                    <div class="modal-header">
-                            <h5 class="modal-title">@{{modalTitle}}</h5>
-                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                        </div>
+                <div class="modal-header">
+                    <h5 class="modal-title">@{{modalTitle}}</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
                 <div class="modal-body">
                     <div class="container-fluid">
                         <div class="form-group">
-                            <label for="category">News: </label>
-                            <select class="custom-select" name="category" id="category" ng-model="sub_category.category_id">
-                                <option ng-repeat="option in categories" value="@{{option.id}}">@{{option.category_name}}</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Category Name:</label>
+                            <label>Title:</label>
                             <div>
-                                <input type="text" class="form-control" ng-model="sub_category.sub_category_name">
+                                <input type="text" class="form-control" ng-model="news.title">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Description:</label>
+                            <label>Content:</label>
                             <div>
-                                <textarea style="height: 100px;" type="text" class="form-control" ng-model="sub_category.description">
+                                <textarea style="height: 100px;" type="text" class="form-control" ng-model="news.content">
 
                                 </textarea>
                             </div>

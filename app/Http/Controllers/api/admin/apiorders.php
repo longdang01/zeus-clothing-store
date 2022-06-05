@@ -59,7 +59,7 @@ class apiorders extends Controller
      */
     public function show($id)
     {
-        return orders::with('customer','payment','transport','orders_detail','orders_status')
+        return orders::with('customer','payment','transport','ordersDetail','ordersStatus')
         ->where("id","=",$id)
         ->first();
     }

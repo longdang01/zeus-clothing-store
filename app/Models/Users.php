@@ -11,6 +11,6 @@ class Users extends Model
 
     protected $table = 'users';
     public function staff(){
-        return $this->hasOne(staff::class);
+        return $this->hasOne(staff::class,"username","username");
     }
 }

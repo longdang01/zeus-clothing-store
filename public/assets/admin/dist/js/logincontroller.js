@@ -28,16 +28,15 @@ app.controller('login', function($scope, $http) { //tao 1 controller
         }
         if(check){
             $http({
-                method: "GET",
-                url: "http://localhost:8000/api/user/" + $('#username')[0].value
+                method: "POST",
+                url: "http://localhost:8000/api/user/getbyusername",
+                data: {
+                    "username": $("#username")[0].value
+                },
+                "content-Type": "application/json"
             }).then(function(response) {
-                console.log(response.data);
                 if(response.data != ""){
-                    if(response.data.username == "admin" && $("#password")[0].value == response.data.password){
-                        sessionStorage.setItem('users',JSON.stringify(response.data));
-                        window.location.replace("/admin");
-                    }
-                    else if(response.data.staff != null){
+                    if(response.data.staff != null){
                         if($("#password")[0].value == response.data.password){
                             sessionStorage.setItem('users',JSON.stringify(response.data));
                             window.location.replace("/admin");

@@ -17,8 +17,7 @@ class apinews extends Controller
      */
     public function index()
     {
-        $news = news::with('staff')->get();
-        return $news;
+        return news::with('staff')->get();
     }
     /**
      * Show the form for creating a new resource.
@@ -44,6 +43,7 @@ class apinews extends Controller
             'content' => $request->content,
             'date_create' => Carbon::parse($request->date_create)->format('Y-m-d')
         ]);
+        return news::with("staff")->orderBy("id","desc")->first();
     }
 
     /**
@@ -54,7 +54,7 @@ class apinews extends Controller
      */
     public function show($id)
     {
-        return news::with('staff')->get()::findOrFail($id);
+        return news::with('staff')->findOrFail($id);
     }
 
     /**

@@ -5,31 +5,27 @@ app.controller('news', function($scope, $http) { //tao 1 controller
         url: "http://localhost:8000/api/news"
     }).then(function(response) {
         $scope.list_news= response.data;
+        console.log(response.data);
     });
     $scope.showmodal = function(id) {;
-        $http({
-            method: "GET",
-            url: "http://localhost:8000/api/category"
-        }).then(function(response) {
-            $scope.categories= response.data;
-        });
         $scope.id = id;
         if (id == 0) {
             $scope.news = null;
-            $scope.modalTitle = "Add new product sub category";
+            $scope.modalTitle = "Add new News";
         } else {
-            $scope.modalTitle = "Edit product sub category";     
+            $scope.modalTitle = "Edit News";     
             $http({
                 method: "GET",
                 url: "http://localhost:8000/api/news/" + id
             }).then(function(response) {
-                $scope.news = response.data;
-                $scope.news.category_id = $scope.news.category_id + "";
+                $scope.news = response.data;    
             });
         }
         $('#modelId').modal('show');
     }
     $scope.deleteClick = function(id) {
+        console.log(id);
+        console.log($scope.list_news);
         var hoi = confirm("Ban co muon xoa that khong");
         if (hoi) {
             $http({
@@ -41,6 +37,8 @@ app.controller('news', function($scope, $http) { //tao 1 controller
         }
     }
     $scope.saveData = function() {
+        var login = JSON.parse(sessionStorage.getItem('users'));
+        $scope.news.staff_id = login.staff.id;
         if ($scope.id == 0) { //dang them tin moi
             $http({
                 method: "POST",
@@ -50,6 +48,7 @@ app.controller('news', function($scope, $http) { //tao 1 controller
             }).then(function(response) {
                 $('#modelId').modal('hide');
                 $scope.list_news.push(response.data);
+                $scope.news.id = response.data.id
             },function(e){
                 alert("Thêm thất bại");
             });
@@ -61,10 +60,9 @@ app.controller('news', function($scope, $http) { //tao 1 controller
                 "content-Type": "application/json"
             }).then(function(response) {
                 $('#modelId').modal('hide');
-                var e = $scope.sub_categories.findIndex((obj => obj.id == $scope.id));
-                $scope.list_news[e].category_id = $scope.news.category_id;
-                $scope.list_news[e].news_name = $scope.news.news_name;
-                $scope.list_news[e].description = $scope.news.description;
+                var e = $scope.list_news.findIndex((obj => obj.id == $scope.id));
+                $scope.list_news[e].title = $scope.news.title;
+                $scope.list_news[e].content = $scope.news.content;
                 
             },function(e){
                 alert("Cập nhật thất bại");

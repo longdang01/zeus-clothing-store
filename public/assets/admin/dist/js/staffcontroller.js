@@ -72,8 +72,7 @@ app.controller('staff', function($scope, $http) { //tao 1 controller
                 method: "DELETE",
                 url: "http://localhost:8000/api/staff/" + id
             }).then(function(response) {
-                $scope.message = response.data;
-                location.reload();
+                $scope.staffs.pop(id);
             });
         }
     }
@@ -83,11 +82,14 @@ app.controller('staff', function($scope, $http) { //tao 1 controller
         $scope.staff.picture = $img[$img.length-1];
         if ($scope.id == 0) { //dang them tin moi
             $http({
-                method: "GET",
-                url: "http://localhost:8000/api/user/" + $scope.staff.users.username,
+                method: "POST",
+                url: "http://localhost:8000/api/user/getbyusername",
+                data: {
+                    "username": $("#username")[0].value
+                },
                 "content-Type": "application/json"
             }).then(function(response) {
-                if(response.data == null)
+                if(response.data != "")
                 {
                     alert('Tài khoản đã tồn tại'); 
                     $('#username').focus();                   
@@ -99,39 +101,36 @@ app.controller('staff', function($scope, $http) { //tao 1 controller
                         data: $scope.staff.users,
                         "content-Type": "application/json"
                     }).then(function(response) {
-                        $scope.staff.users = response.data;
-                        console.log($scope.staff.users);
-                        $scope.staff.users_id = response.data.id;
+                        $scope.staff.username = $scope.staff.users.username;
+                        $http({
+                            method: "POST",
+                            url: "http://localhost:8000/api/staff",
+                            data: $scope.staff,
+                            "content-Type": "application/json"
+                        }).then(function(response) {
+                            $scope.staffs.push(response.data);
+                            if($scope.postData != null){
+                                $scope.postData.append('id', response.data.id);
+                                $.ajax({
+                                    headers: { 'X-CSRF-Token': $('meta[name=csrf_token]').attr('content') },
+                                    async: true,
+                                    type: 'post',
+                                    contentType: false,
+                                    processData: false,
+                                    url: "http://127.0.0.1:8000/api/" + 'upload',
+                                    data: $scope.postData,
+                                    success: function (res) {
+                                      console.log('success');
+                                      $scope.postData = null;
+                                    },
+                                    error: function (res) {
+                                      console.log('loi');
+                                    },
+                                  });  
+                            }
+                        });
                     });
-                    // $http({
-                    //     method: "POST",
-                    //     url: "http://localhost:8000/api/staff",
-                    //     data: $scope.staff,
-                    //     "content-Type": "application/json"
-                    // }).then(function(response) {
-                    //     $scope.message = response.data;
-                    //     console.log(response.data);
-                    //     $scope.staffs.push($scope.staff);
-                    //     if($scope.postData != null){
-                    //         $scope.postData.append('id', $scope.staff.id);
-                    //         $.ajax({
-                    //             headers: { 'X-CSRF-Token': $('meta[name=csrf_token]').attr('content') },
-                    //             async: true,
-                    //             type: 'post',
-                    //             contentType: false,
-                    //             processData: false,
-                    //             url: "http://127.0.0.1:8000/api/" + 'upload',
-                    //             data: $scope.postData,
-                    //             success: function (res) {
-                    //               console.log('success');
-                    //               $scope.postData = null;
-                    //             },
-                    //             error: function (res) {
-                    //               console.log('loi');
-                    //             },
-                    //           });  
-                    //     }
-                    // });
+                    
                     $('#modelId').modal('hide');
                 }
             });
