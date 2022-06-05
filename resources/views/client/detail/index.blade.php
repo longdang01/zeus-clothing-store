@@ -136,6 +136,7 @@
 
                                     </div>
                                     <a href="/checkout" 
+                                    ng-click="addToCart(product)"
                                     class="content__options-btn
                                     content__options-btn-toCheckout">Mua ngay</a>
                                 </div>

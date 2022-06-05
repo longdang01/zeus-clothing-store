@@ -1,7 +1,7 @@
 @extends('client.shared.layout')
 @section('content')
 
-<div ng-controller="HomeController">
+<div ng-controller="ProductController">
     <!-- [Banner] -->
     <section class="banner">
         <div class="banner__wrap">
@@ -25,7 +25,7 @@
     </section>
     
     <!-- [New arrival] -->
-    <section class="unit">
+    <section id="newArrival" class="unit">
         <div class="container">
             <div class="unit__header">
                 <div>
@@ -56,19 +56,26 @@
                         <div class="unit__main">
                             <div ng-repeat="product in productsNew" class="product__wrap">
                                 <div class="product__wrap-img">
-                                    <a href="#">
+                                    <a ng-click="goDetail(product)"
+                                        href='@{{ url }}'>
                                         <img ng-src="@{{ product.color[0].avatar }}"
                                         class="product__img">
                                     </a>
     
                                     <div class="product__options-wrap">
                                         <div class="product__options">
-                                            <a href="#" class="product__options-add-to-cart">
+                                            <a 
+                                            ng-click="addToCart(product, 1)"
+                                            href="javascript:;" class="product__options-add-to-cart">
                                                 Thêm vào giỏ hàng
                                                 <i class="fa-solid fa-arrow-right"></i>
                                             </a>
                                             <div class="product__options-child">
-                                                <a href="#"><i class="ti-eye"></i></a>
+                                                <a href="javascript:;"
+                                                ng-click="goQuickView(product)"
+                                                class="btn-quick-view" data-bs-toggle="modal"
+                                                data-bs-target="#quickView"
+                                                ><i class="ti-eye"></i></a>
                                                 <a href="#"><i class="ti-heart"></i></a>
                                                 <a href="#"><i class="ti-location-arrow"></i></a>
                                             </div>
@@ -77,7 +84,8 @@
                                 </div>
     
                                 <div class="product__wrap-info">
-                                    <a href="#" class="product__name">@{{ product.product_name }}</a>
+                                    <a ng-click="goDetail(product)"
+                                        href='@{{ url }}' class="product__name">@{{ product.product_name }}</a>
                                     <span class="product__price">@{{ product.price.price | currency:"":0 }} VNĐ</span>
                                 </div>
                             </div>
@@ -216,7 +224,7 @@
     </section>
     
     <!-- [Best seller] -->
-    <section class="unit">
+    <section id="bestSeller" class="unit">
         <div class="container">
             <div class="unit__header">
                 <div>
@@ -247,19 +255,26 @@
                         <div class="unit__main owl-carousel owl-theme">
                             <div ng-repeat="product in productsBestSeller" class="product__wrap">
                                 <div class="product__wrap-img">
-                                    <a href="#">
+                                    <a ng-click="goDetail(product)"
+                                        href='@{{ url }}'>
                                         <img ng-src="@{{ product.color[0].avatar }}"
                                         class="product__img">
                                     </a>
     
                                     <div class="product__options-wrap">
                                         <div class="product__options">
-                                            <a href="#" class="product__options-add-to-cart">
+                                            <a href="#" 
+                                            ng-click="addToCart(product, 1)"
+                                            class="product__options-add-to-cart">
                                                 Thêm vào giỏ hàng
                                                 <i class="fa-solid fa-arrow-right"></i>
                                             </a>
                                             <div class="product__options-child">
-                                                <a href="#"><i class="ti-eye"></i></a>
+                                                <a href="#"
+                                                ng-click="goQuickView(product)"
+                                                class="btn-quick-view" data-bs-toggle="modal"
+                                                data-bs-target="#quickView"
+                                                ><i class="ti-eye"></i></a>
                                                 <a href="#"><i class="ti-heart"></i></a>
                                                 <a href="#"><i class="ti-location-arrow"></i></a>
                                             </div>
@@ -268,7 +283,8 @@
                                 </div>
     
                                 <div class="product__wrap-info">
-                                    <a href="#" class="product__name">@{{ product.product_name }}</a>
+                                    <a ng-click="goDetail(product)"
+                                        href='@{{ url }}' class="product__name">@{{ product.product_name }}</a>
                                     <span class="product__price">@{{ product.price.price | currency:"":0 }} VNĐ</span>
                                 </div>
                             </div>

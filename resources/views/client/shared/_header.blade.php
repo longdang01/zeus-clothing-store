@@ -18,9 +18,9 @@
                         <li class="header__topbar-list-item">
                             <i class="ti-location-pin"></i>
                             <a href="#">Địa chỉ cửa hàng</a>
-                        </li><li class="header__topbar-list-item">
+                        </li><li ng-if="status == 1" class="header__topbar-list-item">
                             <i class="ti-alarm-clock"></i>
-                            <a href="#">Đơn hàng của bạn</a>
+                            <a href="/orders" >Đơn hàng của bạn</a>
                         </li></li><li ng-if="status == 0" class="header__topbar-list-item">
                             <i class="ti-power-off"></i>
                             <a href="/customers/login">Đăng nhập</a>
@@ -90,25 +90,25 @@
                             </a>
                             <ul class="header__navbar-item-dropdown dropdown-menu animate slideIn" 
                             aria-labelledby="user-dropdown" ng-controller="CustomerController">
-                                <li>
+                                <li ng-if="status == 1">
                                     <a href="#" class="dropdown-item">
                                         <i class="ti-settings"></i>
                                         Tài khoản của bạn
                                     </a>
                                 </li>
-                                <li>
+                                <li ng-if="status == 1">
                                     <a href="/orders" class="dropdown-item">
                                         <i class="ti-briefcase"></i>
                                         Đơn hàng của bạn
                                     </a>
                                 </li>
-                                <li>
+                                <li ng-if="status == 1">
                                     <a href="#" class="dropdown-item">
                                         <i class="ti-heart"></i>
                                         Yêu thích 
                                     </a>
                                 </li>
-                                <li>
+                                <li ng-if="status == 1">
                                     <a ng-click="logOut()" href="#" class="dropdown-item">
                                         <i class="ti-power-off"></i>
                                         Đăng xuất
@@ -126,7 +126,7 @@
     <nav class="header__navbar">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 text-start">
+                <div class="@{{ (page === '/home' || page === '/') ? 'col-lg-3 text-start' : 'hide'}}">
                     <div class="header__navbar-category">
                         <h3>
                             <i class="ti-align-left"></i>
@@ -135,7 +135,7 @@
                         </h3>
                         <ul class="header__navbar-item-dropdown">
                             <li>
-                                <a href="#">New Arrivals
+                                <a href="#newArrival">New Arrivals
                                     <!-- <i class="fa-solid fa-angle-right"></i> -->
                                 </a>
                                 <ul class="header__navbar-item-dropdown-child dropdown-child-right">
@@ -144,7 +144,7 @@
                                     <li><a href="#">Nữ</a></li> -->
                                 </ul>
                             </li>
-                            <li><a href="#">Best Selling
+                            <li><a href="#bestSeller">Best Selling
                                 <!-- <i class="fa-solid fa-angle-right"></i> -->
                             </a>
                                 <ul class="header__navbar-item-dropdown-child dropdown-child-right">
@@ -153,24 +153,24 @@
                                     <li><a href="#">Nữ</a></li> -->
                                 </ul>
                             </li>
-                            <li><a href="#">Sale
+                            <!-- <li><a href="#">Sale -->
                                 <!-- <i class="fa-solid fa-angle-right"></i> -->
-                            </a>
-                                <ul class="header__navbar-item-dropdown-child dropdown-child-right">
+                            <!-- </a>
+                                <ul class="header__navbar-item-dropdown-child dropdown-child-right"> -->
                                     <!-- <li><a href="#">Tất cả sản phẩm</a></li> -->
                                     <!-- <li><a href="#">Nam</a></li>
                                     <li><a href="#">Nữ</a></li> -->
-                                </ul>
-                            </li>
+                                <!-- </ul>
+                            </li> -->
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-7">
+                <div class="@{{ (page === '/home' || page === '/') ? 'col-lg-7' : 'col-lg-10' }}" >
                     <ul class="header__navbar-list">
                         <li class="header__navbar-item">
                             <a href="#" class="header__navbar-item-link active">Trang chủ</a>
                         </li><li class="header__navbar-item">
-                            <a href="#" class="header__navbar-item-link">
+                            <a href="/products" class="header__navbar-item-link">
                                 Sản phẩm
                                 <i class="fa-solid fa-angle-down"></i>
                             </a>
@@ -185,8 +185,8 @@
                                 <span class="header__navbar-item-link--dot"></span>
                             </a>
                             <ul class="header__navbar-item-dropdown">
-                                <li><a href="#">Xem giỏ hàng (@{{ totalCart }} sản phẩm)</a></li>
-                                <li><a href="#">Thanh toán</a></li>
+                                <li><a href="/carts">Xem giỏ hàng (@{{ totalCart }} sản phẩm)</a></li>
+                                <li><a href="/checkout">Thanh toán</a></li>
                             </ul>
                         </li><li class="header__navbar-item">
                             <a href="#" class="header__navbar-item-link">Dịch vụ</a>
@@ -203,9 +203,9 @@
                             <i class="ti-align-justify"></i>
                         </h3>
                         <ul class="header__navbar-item-dropdown">
-                            <li>
+                            <li style="display: none">
                                 <a href="#"><i class="ti-search"></i></a>
-                            </li><li>
+                            </li><li style="display: none">
                                 <a href="#"><i class="ti-user"></i></a>
                                 <ul class="header__navbar-item-dropdown-child dropdown-child-left">
                                     <li><a href="#">Đăng nhập</a></li>
@@ -222,6 +222,6 @@
     </nav>
 </header>
 
-<script src="/assets/client/dist/controllers/CartController.js"></script>
-<script src="/assets/client/dist/controllers/CustomerController.js"></script>
+<!-- <script src="/assets/client/dist/controllers/CartController.js"></script>
+<script src="/assets/client/dist/controllers/CustomerController.js"></script> -->
 

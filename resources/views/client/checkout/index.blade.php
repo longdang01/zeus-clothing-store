@@ -81,18 +81,18 @@
                                     <div class="mb-5">
                                         <div>
                                             <div class="mb-3">
-                                                <input type="text" class="form-control" placeholder="Họ và tên">
+                                                <input type="text" ng-model="customer.customer_name" class="form-control" placeholder="Họ và tên">
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-md-7">
-                                                    <input type="email" class="form-control" placeholder="Email">
+                                                    <input type="email" ng-model="customer.email" class="form-control" placeholder="Email">
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control" placeholder="Số điện thoại">
+                                                    <input type="text" ng-model="customer.phone" class="form-control" placeholder="Số điện thoại">
                                                 </div>
                                             </div>
                                             <div class="mb-3">
-                                                <input type="text" id="specific_address" class="form-control" placeholder="Địa chỉ (số nhà, thôn)">
+                                                <input type="text" id="specific_address" ng-model="customer.address" class="form-control" placeholder="Địa chỉ (số nhà, thôn)">
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-4">

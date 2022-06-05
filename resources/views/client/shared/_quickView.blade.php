@@ -108,7 +108,8 @@
                                 </div>
                                 
                                 <div class="add-to-cart">
-                                    <a href="#" data-dismiss="modal" data-toggle="modal" ng-click="addToCart(product)"
+                                    <a href="#" data-dismiss="modal" data-toggle="modal" 
+                                    ng-click="addToCart(product)"
                                      class="btn">Thêm vào giỏ hàng</a>
                                     <a href="#" class="btn min"><i class="ti-heart"></i></a>
                                     <a href="#" class="btn min"><i class="fa fa-compress"></i></a>
@@ -123,4 +124,4 @@
     </div>
 </div>
 
-<script src="/assets/client/dist/controllers/ProductController.js"></script>
+<!-- <script src="/assets/client/dist/controllers/ProductController.js"></script> -->
