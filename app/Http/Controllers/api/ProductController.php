@@ -112,7 +112,7 @@ class ProductController extends Controller
         $product = Product::with('subCategory')
         ->with('supplier')->with('brand')
         ->with('price')->with('color')->with('size')
-        ->findOrFail($id)->where('is_active', 1);
+        ->where('is_active', 1)->findOrFail($id);
         return $product;
     }
 

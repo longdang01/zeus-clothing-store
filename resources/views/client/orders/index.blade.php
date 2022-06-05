@@ -44,7 +44,7 @@
                                                 <th>STT</th>
                                                 <th>Thời gian đặt</th>
                                                 <th>Địa chỉ nhận</th>
-                                                <th>Thành tiền</th>
+                                                <th>Thành tiền (VNĐ)</th>
                                                 <th>Lựa chọn</th>
                                             </tr>
                                         </thead>
@@ -60,7 +60,7 @@
                                                     @{{ orders.delivery_address }}
                                                 </td>
                                                 <td>
-                                                    @{{ orders.total }}
+                                                    @{{ orders.total | currency:"":0 }}
                                                 </td>
                                                 <td>
                                                     <div>
@@ -88,9 +88,165 @@
                                 
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="ordersStatus2"></div>
-                        <div class="tab-pane fade" id="ordersStatus3"></div>
-                        <div class="tab-pane fade" id="ordersStatus4"></div>
+                        <div class="tab-pane fade" id="ordersStatus2">
+                            <div class="unit__main orders__wrap-main-body">
+                                    <div class="orders__wrap-main-body-item">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>STT</th>
+                                                    <th>Thời gian đặt</th>
+                                                    <th>Địa chỉ nhận</th>
+                                                    <th>Thành tiền (VNĐ)</th>
+                                                    <th>Lựa chọn</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="orders in orders2 track by $index">
+                                                    <td>
+                                                        @{{ $index + 1}}
+                                                    </td>
+                                                    <td>
+                                                        @{{ orders.order_date.slice(0, 10) }}
+                                                    </td>
+                                                    <td>
+                                                        @{{ orders.delivery_address }}
+                                                    </td>
+                                                    <td>
+                                                        @{{ orders.total | currency:"":0 }}
+                                                    </td>
+                                                    <td>
+                                                        <div>
+                                                            <a href="javascript:void(0)"
+                                                            ng-click="goDetail(orders)"
+                                                            data-bs-toggle="modal" data-bs-target="#ordersDetailModal" 
+                                                            data-bs-toggle="tooltip"
+                                                            data-bs-placement="top"
+                                                            title="Xem chi tiết đơn"
+                                                            style="font-size: 1.6rem; margin-right: 2.5em">
+                                                                <i class="ti-eye"></i>
+                                                            </a>
+                                                            <a href="javascript:void(0)" 
+                                                            ng-click="remove($event, orders)"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top" title="Hủy đơn" style="font-size: 1.6rem; margin-right: 2.5rem">  
+                                                                <i class="ti-close"></i>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        <div class="tab-pane fade" id="ordersStatus3">
+                            <div class="unit__main orders__wrap-main-body">
+                                    <div class="orders__wrap-main-body-item">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>STT</th>
+                                                    <th>Thời gian đặt</th>
+                                                    <th>Địa chỉ nhận</th>
+                                                    <th>Thành tiền (VNĐ)</th>
+                                                    <th>Lựa chọn</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="orders in orders3 track by $index">
+                                                    <td>
+                                                        @{{ $index + 1}}
+                                                    </td>
+                                                    <td>
+                                                        @{{ orders.order_date.slice(0, 10) }}
+                                                    </td>
+                                                    <td>
+                                                        @{{ orders.delivery_address }}
+                                                    </td>
+                                                    <td>
+                                                        @{{ orders.total | currency:"":0 }}
+                                                    </td>
+                                                    <td>
+                                                        <div>
+                                                            <a href="javascript:void(0)"
+                                                            ng-click="goDetail(orders)"
+                                                            data-bs-toggle="modal" data-bs-target="#ordersDetailModal" 
+                                                            data-bs-toggle="tooltip"
+                                                            data-bs-placement="top"
+                                                            title="Xem chi tiết đơn"
+                                                            style="font-size: 1.6rem; margin-right: 2.5em">
+                                                                <i class="ti-eye"></i>
+                                                            </a>
+                                                            <!-- <a href="javascript:void(0)" 
+                                                            ng-click="remove($event, orders)"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top" title="Hủy đơn" style="font-size: 1.6rem; margin-right: 2.5rem">  
+                                                                <i class="ti-close"></i>
+                                                            </a> -->
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        <div class="tab-pane fade" id="ordersStatus4">
+                        <div class="unit__main orders__wrap-main-body">
+                                <div class="orders__wrap-main-body-item">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>STT</th>
+                                                <th>Thời gian đặt</th>
+                                                <th>Địa chỉ nhận</th>
+                                                <th>Thành tiền (VNĐ)</th>
+                                                <th>Lựa chọn</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="orders in orders4 track by $index">
+                                                <td>
+                                                    @{{ $index + 1}}
+                                                </td>
+                                                <td>
+                                                    @{{ orders.order_date.slice(0, 10) }}
+                                                </td>
+                                                <td>
+                                                    @{{ orders.delivery_address }}
+                                                </td>
+                                                <td>
+                                                    @{{ orders.total | currency:"":0 }}
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <a href="javascript:void(0)"
+                                                        ng-click="goDetail(orders)"
+                                                        data-bs-toggle="modal" data-bs-target="#ordersDetailModal" 
+                                                        data-bs-toggle="tooltip"
+                                                        data-bs-placement="top"
+                                                        title="Xem chi tiết đơn"
+                                                        style="font-size: 1.6rem; margin-right: 2.5em">
+                                                            <i class="ti-eye"></i>
+                                                        </a>
+                                                        <!-- <a href="javascript:void(0)" 
+                                                        ng-click="remove($event, orders)"
+                                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Hủy đơn" style="font-size: 1.6rem; margin-right: 2.5rem">  
+                                                            <i class="ti-close"></i>
+                                                        </a> -->
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                            </div>
+                        </div>
                     </div>
                 </div>
                 

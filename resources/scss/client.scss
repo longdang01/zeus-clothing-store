@@ -465,7 +465,7 @@
         background: $white-color;
         animation: fadeInDown 1s both 0.2s;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-        z-index: 999;
+        z-index: 9999;
     }
 
     &.sticky &__navbar ul li {

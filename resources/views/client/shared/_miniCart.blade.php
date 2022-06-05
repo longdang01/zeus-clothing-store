@@ -55,4 +55,4 @@
     </div>
 </div>
 
-<script src="/assets/client/dist/controllers/CartController.js"></script>
+<!-- <script src="/assets/client/dist/controllers/CartController.js"></script> -->

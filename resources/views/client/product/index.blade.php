@@ -47,7 +47,7 @@
                 </div>
                 <div class="row product__list-wrap-main-body">
                     <div class="col-lg-3">
-                        <div class="left__item">
+                        <div style="display: none" class="left__item">
                             <div class="left__item-header">
                                 <span>Danh mục</span>    
 
@@ -225,7 +225,8 @@
                             class="col-lg-4">
                                 <div class="product__wrap">
                                     <div class="product__wrap-img">
-                                        <a href="#">
+                                        <a ng-click="goDetail(product)"
+                                        href='@{{ url }}'>
                                             <img ng-src="@{{ product.color[0].avatar }}"
                                             class="product__img">
                                         </a>
@@ -233,6 +234,7 @@
                                         <div class="product__options-wrap">
                                             <div class="product__options">
                                                 <a 
+                                                ng-click="addToCart(product, 1)"
                                                 href="javascript:void(0)"
                                                 class="product__options-add-to-cart">
                                                     Thêm vào giỏ hàng

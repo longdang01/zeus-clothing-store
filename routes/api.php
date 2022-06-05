@@ -73,6 +73,10 @@ Route::get('cart/get-cart/{customer}', [CartController::class, 'getCart']);
 Route::get('orders/get-orders/{customer}', [OrdersController::class, 'getOrders']);
 
 
+<<<<<<< HEAD
+=======
+// <<<<<<< HEAD
+>>>>>>> ce7ab433a64496cf645e87b6566979f2c6046c29
 Route::resource('category',apicategory::class);
 Route::resource('brand',apibrand::class);
 Route::resource('cart',apicart::class);
@@ -99,6 +103,11 @@ Route::post('upload',[apiUpload::class, "uploadFile"]);
 Route::post('user/getbyusername',[apiusers::class, "GetbyUsername"]);
 
 
+<<<<<<< HEAD
+=======
+// =======
+// >>>>>>> 87b4f072298739faeb85f65317dd6524c651c463
+>>>>>>> ce7ab433a64496cf645e87b6566979f2c6046c29
 //[ not used ]
 Route::resource('stocks', StockController::class);
 

@@ -44,9 +44,9 @@
                                 <th style="text-align: left">Ảnh</th>
                                 <th style="padding-left: 1rem">Tên</th>
                                 <th>Loại</th>
-                                <th>Đơn giá</th>
+                                <th>Đơn giá (VNĐ)</th>
                                 <th>Lượng</th>
-                                <th>Thành tiền</th>
+                                <th>Thành tiền (VNĐ)</th>
                             </tr>
                         </thead>
                         <tbody>
