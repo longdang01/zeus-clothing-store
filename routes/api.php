@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\apiStatistic;
 use App\Http\Controllers\api\apiUpload;
 use App\Http\Controllers\api\BrandController;
 use App\Http\Controllers\api\CartController;
@@ -77,6 +78,9 @@ Route::resource('news',NewsController::class);
 Route::post('upload',[apiUpload::class, "uploadFile"]);
 Route::post('user/getbyusername',[UsersController::class, "GetbyUsername"]);
 Route::post('customers/get-customer', [CustomerController::class, 'getCustomers']);
-
+//statistic
+Route::post('statistic/getTopCustomer', [apiStatistic::class, 'getTopCustomer']);
+Route::post('statistic/getTopProduct', [apiStatistic::class, 'getTopProduct']);
+Route::get('statistic/getInforProduct', [apiStatistic::class, 'getInforProduct']);
 Route::resource('stocks', StockController::class);
 

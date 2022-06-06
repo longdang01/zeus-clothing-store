@@ -284,7 +284,7 @@
       else {
         console.log(login.staff.picture);
         $("#staff-avatar").attr("src",login.staff.picture==""?"/assets/admin/dist/img/user2-160x160.jpg":"/upload/staff/"+ login.staff.id + "/" + login.staff.picture);
-        $("#staff-name").val(login.staff.staff_name);
+        $("#staff-name").text(login.staff.staff_name);
         if(login.username != 'admin'){
           $('#nav-staff').remove();
           $('#nav-customer').remove();
