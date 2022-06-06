@@ -37,17 +37,10 @@
 
 </head>
 <body ng-app="App">
-    <div class="app">
+    <div class="app" ng-controller="AppController">
 
         <!-- Preloader -->
-        <div class="preloader">
-            <div class="preloader-inner">
-                <div class="preloader-icon">
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </div>
+        @include('client.shared._preloader')
         <!-- End Preloader -->
         
         <!-- [Header] -->
