@@ -3,8 +3,7 @@ app.controller('product', function($scope, $http,$rootScope) { //tao 1 controlle
         method: "GET",
         url: "http://localhost:8000/api/product"
     }).then(function(response) {
-        console.log(response.data);
-        $scope.products= response.data;
+        $scope.products= response.data[0];
     });
     $http({
         method: "GET",
@@ -20,9 +19,9 @@ app.controller('product', function($scope, $http,$rootScope) { //tao 1 controlle
     });
     $http({
         method: "GET",
-        url: "http://localhost:8000/api/sub_category"
+        url: "http://localhost:8000/api/subcategories"
     }).then(function(response) {
-        $scope.sub_categories= response.data;
+        $scope.sub_categories= response.data[0];
     });
     $scope.color = null;
     $scope.price =null;
@@ -98,14 +97,13 @@ app.controller('product', function($scope, $http,$rootScope) { //tao 1 controlle
                 method: "GET",
                 url: "http://localhost:8000/api/product/" + id
             }).then(function(response) {
-                console.log(response.data);
                 $scope.product = response.data;
                 $scope.product.gender = $scope.product.gender + '';
                 $scope.product.sub_category_id = $scope.product.sub_category_id + '';
                 $scope.product.supplier_id = $scope.product.supplier_id + '';
                 $scope.product.brand_id = $scope.product.brand_id + '';
                 $('#description-editor-update').text($scope.product.description);
-                $('#size-table-update').attr("src",'/upload/product/'+$scope.product.size_table);
+                $('#size-table-update').attr("src",'/upload/product/' + $scope.product.id + "/" +$scope.product.size_table);
                 $('#modelupdate').modal('show');
                 // ClassicEditor
                 //     .create( document.querySelector( '#description-editor-update' ))
@@ -134,9 +132,8 @@ app.controller('product', function($scope, $http,$rootScope) { //tao 1 controlle
                 url: "http://localhost:8000/api/color/" + id
             }).then(function(response) {
                 $scope.color = response.data[0];
-                $('#avatar-color-update').attr("src",'/upload/product/'+$scope.color.avatar);
-                $('#image-color-update').attr("src",'/upload/product/'+$scope.color.images);
-                console.log($scope.color);
+                $('#avatar-color-update').attr("src",'/upload/product/' + $scope.product.id + "/" +$scope.color.avatar);
+                $('#image-color-update').attr("src",'/upload/product/' + $scope.product.id + "/" +$scope.color.images);
             },function(e){
                 alert("Error");
             });
@@ -147,7 +144,6 @@ app.controller('product', function($scope, $http,$rootScope) { //tao 1 controlle
 
     $scope.show_size_modal = function(id) {;
         $scope.size_id = id;
-        console.log($scope.size_id);
         if (id == 0) {
             $scope.size = null;
             $scope.sizemodal_title = "Add new size";
@@ -158,7 +154,6 @@ app.controller('product', function($scope, $http,$rootScope) { //tao 1 controlle
                 url: "http://localhost:8000/api/size/" + id
             }).then(function(response) {
                 $scope.size = response.data;
-                console.log($scope.size);
             },function(e){
                 alert("Error");
             });
@@ -254,8 +249,9 @@ app.controller('product', function($scope, $http,$rootScope) { //tao 1 controlle
                       console.log('loi');
                     },
                   });
-                $('#modelupdate').modal('hide');
+                
             }
+            $('#modelcreate').modal('hide');
             
         });
 
@@ -288,13 +284,14 @@ app.controller('product', function($scope, $http,$rootScope) { //tao 1 controlle
                     success: function (res) {
                       console.log('success');
                       $scope.postAvatar = null;
-                      $('#modelcolorcreate').modal('hide');
+                      
                     },
                     error: function (res) {
                       console.log('loi');
                     },
                   });  
             }
+            $('#modelcolorcreate').modal('hide');
             if($scope.postImage != null){
                 $scope.postImage.append('id', $scope.product.id);
                 $.ajax({
@@ -308,13 +305,14 @@ app.controller('product', function($scope, $http,$rootScope) { //tao 1 controlle
                     success: function (res) {
                       console.log('success');
                       $scope.postImage = null;
-                      $('#modelcolorcreate').modal('hide');
+                      
                     },
                     error: function (res) {
                       console.log('loi');
                     },
                   });  
             }
+            $('#modelcolorcreate').modal('hide');   
         },function(e){
             alert("Error");
         });
@@ -325,7 +323,6 @@ app.controller('product', function($scope, $http,$rootScope) { //tao 1 controlle
         $scope.color.avatar = $avt[$avt.length-1];
         $img = $('#image-color-update-input')[0].value.split("\\");
         $scope.color.images = $img[$img.length-1];
-        console.log($scope.color);
         $http({
             method: "PUT",
             url: "http://localhost:8000/api/color/" + $scope.color_id,
@@ -333,7 +330,6 @@ app.controller('product', function($scope, $http,$rootScope) { //tao 1 controlle
             "content-Type": "application/json"
         }).then(function(response) {
             e = $scope.product.color.findIndex((obj => obj.id == $scope.color_id));
-            console.log($scope.color.avatar);
             $scope.product.color[e].color_name = $scope.color.color_name;
             $scope.product.color[e].hex = $scope.color.hex;
             $scope.product.color[e].avatar = $scope.color.avatar==""?$scope.product.color[e].avatar:$scope.color.avatar;
@@ -462,13 +458,14 @@ app.controller('product', function($scope, $http,$rootScope) { //tao 1 controlle
                     data: $scope.postProduct,
                     success: function (res) {
                       console.log('success');
-                      $('#modelupdate').modal('hide');
+                      
                     },
                     error: function (res) {
                       console.log('loi');
                     },
                   });  
             }
+            $('#modelupdate').modal('hide');
         },function(e){
             alert("Error");
         });

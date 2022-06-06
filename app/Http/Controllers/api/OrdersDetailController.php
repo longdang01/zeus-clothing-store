@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Models\OrdersDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OrdersDetailController extends Controller
 {
@@ -15,7 +16,7 @@ class OrdersDetailController extends Controller
      */
     public function index()
     {
-        //
+        return OrdersDetail::with('product','color','size')->get();
     }
 
     /**
@@ -55,7 +56,9 @@ class OrdersDetailController extends Controller
      */
     public function show($id)
     {
-        //
+        return OrdersDetail::with('product','color','size')
+        ->where("orders_id","=",$id)
+        ->get();
     }
 
     /**
@@ -78,7 +81,16 @@ class OrdersDetailController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('orders_detail')
+              ->where('id', $id)
+              ->update([
+                'orders_id' => $request->orders_id,
+                'product_id' => $request->product_id,
+                'color_id' => $request->color_id,
+                'size_id' => $request->size_id,
+                'quantity' => $request->quantity,
+                'price' => $request->price
+              ]);
     }
 
     /**
@@ -89,7 +101,8 @@ class OrdersDetailController extends Controller
      */
     public function destroy($id)
     {
-        //
+        OrdersDetail::findOrFail($id)->delete();
+        return "Deleted";
     }
 
    

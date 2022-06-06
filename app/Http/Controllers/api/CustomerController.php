@@ -18,6 +18,10 @@ class CustomerController extends Controller
     {
         return [Customer::get(), Users::get()];
     }
+    public function getCustomers()
+    {
+        return Customer::with('users')->get();
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -98,6 +102,7 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        customer::findOrFail($id)->delete();
+        return "Deleted";
     }
 }

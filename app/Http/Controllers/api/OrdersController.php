@@ -20,7 +20,7 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        return Orders::with('ordersDetails')->get();
+        return Orders::with(['ordersDetails','customer','payment','transport'])->get();
     }
 
     public function getOrders($customer_id) {
@@ -90,7 +90,9 @@ class OrdersController extends Controller
      */
     public function show($id)
     {
-        //
+        return orders::with('customer','payment','transport','ordersDetail','ordersStatus')
+        ->where("id","=",$id)
+        ->first();
     }
 
     /**
@@ -113,7 +115,12 @@ class OrdersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('orders')
+        ->where('id', $id)
+        ->update([
+          'status' => (int)$request->status
+        ]);
+        return $id;
     }
 
     /**

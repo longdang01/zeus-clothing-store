@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Models\Users;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
 {
@@ -54,9 +55,16 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        return users::findOrFail($id);
     }
-
+    public function GetbyUsername(Request $request)
+    {
+        $user = users::with("staff")->where('username','=',$request->username)->first();
+        if ($user!=null){
+            return $user;
+        }
+        return null;
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -77,7 +85,11 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('users')
+              ->where('username', $request->username)
+              ->update([
+                'password' => $request->password
+              ]);
     }
 
     /**
@@ -88,6 +100,7 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        users::findOrFail($id)->delete();
+        return "Deleted";
     }
 }

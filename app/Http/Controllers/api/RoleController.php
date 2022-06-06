@@ -4,6 +4,8 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\role;
+use Illuminate\Support\Facades\DB;
 
 class RoleController extends Controller
 {
@@ -14,7 +16,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        return role::all();
     }
 
     /**
@@ -35,7 +37,11 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('role')->insert([
+            'role_name' => $request->role_name,
+            'description' => $request->description
+        ]);
+        return role::orderBy("id","desc")->first();
     }
 
     /**
@@ -46,7 +52,7 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        //
+        return role::findOrFail($id);
     }
 
     /**
@@ -69,7 +75,12 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('role')
+              ->where('id', $request->id)
+              ->update([
+                'role_name' => $request->role_name,
+                'description' => $request->description
+              ]);
     }
 
     /**
@@ -80,6 +91,7 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        role::findOrFail($id)->delete();
+        return "Deleted";
     }
 }

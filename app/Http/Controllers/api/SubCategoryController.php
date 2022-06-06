@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SubCategoryController extends Controller
 {
@@ -41,7 +42,14 @@ class SubCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('sub_category')->insert([
+            'category_id' => $request->category_id,
+            'sub_category_name' => $request->sub_category_name,
+            'description' => $request->description!=null?$request->description:""
+        ]);
+        return SubCategory::with('category')
+                ->orderBy('id', 'desc')
+                ->first();
     }
 
     /**
@@ -52,7 +60,7 @@ class SubCategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        return SubCategory::with('category')->where('id','=',$id)->first();
     }
 
     /**
@@ -73,9 +81,15 @@ class SubCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        DB::table('sub_category')
+              ->where('id', $request->id)
+              ->update([
+                'category_id' => $request->category_id,
+                'sub_category_name' => $request->sub_category_name,
+                'description' => $request->description!=null?$request->description:""
+              ]);
     }
 
     /**
@@ -86,6 +100,7 @@ class SubCategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        SubCategory::findOrFail($id)->delete();
+        return "Deleted";
     }
 }

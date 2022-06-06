@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\supplier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SupplierController extends Controller
 {
@@ -14,7 +16,7 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        //
+        return supplier::all();
     }
 
     /**
@@ -35,7 +37,14 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('supplier')->insert([
+            'supplier_name' => $request->supplier_name,
+            'address' => $request->address,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'description' => $request->description 
+        ]);
+        return supplier::orderBy("id","desc")->first();
     }
 
     /**
@@ -46,7 +55,7 @@ class SupplierController extends Controller
      */
     public function show($id)
     {
-        //
+        return supplier::findOrFail($id);
     }
 
     /**
@@ -69,7 +78,15 @@ class SupplierController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('supplier')
+              ->where('id', $request->id)
+              ->update([
+                'supplier_name' => $request->supplier_name,
+                'address' => $request->address,
+                'phone' => $request->phone,
+                'email' => $request->email,
+                'description' => $request->description 
+              ]);
     }
 
     /**
@@ -80,6 +97,7 @@ class SupplierController extends Controller
      */
     public function destroy($id)
     {
-        //
+        supplier::findOrFail($id)->delete();
+        return "Deleted";
     }
 }

@@ -55,7 +55,7 @@
         </table>
         <dir-pagination-controls
             pagination-id="1"
-            max-size="4"
+            max-size="5"
             direction-links="true"
             boundary-links="true" >
         </dir-pagination-controls>
@@ -64,7 +64,7 @@
     <!-- /.product content -->
     <!-- Product Modal -->
     <div class="modal fade" id="modelupdate" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-        <div class="modal-dialog" style="max-width: 1500px" role="document">
+        <div class="modal-dialog" style="max-width: 1400px" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">@{{modalTitle}}</h5>
@@ -262,7 +262,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="$('#modelsize').modal('hide');">Close</button>
+                                                            <button type="button" class="btn btn-secondary" onclick="$('#modelsize').modal('hide');">Close</button>
                                                             <button type="button" class="btn btn-primary" ng-click="savesize()">Save changes</button>
                                                         </div>
                                                         </div>
@@ -308,7 +308,7 @@
                                         <!-- End Product size main -->
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick=" $('#modelcolorupdate').modal('hide');">Close</button>
+                                        <button type="button" class="btn btn-secondary" onclick=" $('#modelcolorupdate').modal('hide');">Close</button>
                                         <button type="button" class="btn btn-primary" ng-click="updatecolor()">Save changes</button>
                                     </div>
                                     </div>
@@ -364,7 +364,7 @@
                                             </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="$('#modelcolorcreate').modal('hide');">Close</button>
+                                        <button type="button" class="btn btn-secondary" onclick="$('#modelcolorcreate').modal('hide');">Close</button>
                                         <button type="button" class="btn btn-primary" ng-click="addcolor()">Save changes</button>
                                     </div>
                                     </div>
@@ -391,8 +391,8 @@
                                     <tr dir-paginate="c in product.color|itemsPerPage:4" pagination-id="2">
                                     <td>@{{$index_color+1}}</td>
                                     <td>@{{c.color_name}}</td>
-                                    <td><img style="width: 60px;" src="/upload/product/@{{c.avatar}}" alt=""></td>
-                                    <td><img style="width: 60px;" src="/upload/product/@{{c.images}}" alt=""></td>
+                                    <td><img style="width: 60px;" src="/upload/product/@{{product.id}}/@{{c.avatar}}" alt=""></td>
+                                    <td><img style="width: 60px;" src="/upload/product/@{{product.id}}/@{{c.images}}" alt=""></td>
                                     <td>@{{c.hex}}</td>
                                     <td><button class="btn btn-info" ng-click="show_color_modal(c.id)">&nbsp;Edit</button></td>
                                     <td><button class="btn btn-danger" ng-click="deletecolorClick(c.id)">&nbsp;Delete</button></td>
@@ -411,7 +411,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" onclick="$('#modelupdate').modal('hide');">Close</button>
                     <button type="button" class="btn btn-primary" ng-click="saveData()">Save</button>
                 </div>
             </div>
@@ -519,7 +519,7 @@
                         </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" onclick="$('#modelcreate').modal('hide');">Close</button>
                     <button type="button" class="btn btn-primary" ng-click="addproduct()">Save</button>
                 </div>
             </div>

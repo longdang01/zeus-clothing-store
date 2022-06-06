@@ -1,38 +1,28 @@
 <?php
 
+use App\Http\Controllers\api\apiUpload;
+use App\Http\Controllers\api\BrandController;
 use App\Http\Controllers\api\CartController;
 use App\Http\Controllers\api\CartDetailController;
 use App\Http\Controllers\api\CategoryController;
+use App\Http\Controllers\api\ColorController;
 use App\Http\Controllers\api\CustomerController;
+use App\Http\Controllers\api\NewsController;
 use App\Http\Controllers\api\OrdersController;
 use App\Http\Controllers\api\OrdersDetailController;
+use App\Http\Controllers\api\OrdersStatusController;
 use App\Http\Controllers\api\PaymentController;
+use App\Http\Controllers\api\PositionController;
+use App\Http\Controllers\api\PriceController;
 use App\Http\Controllers\api\ProductController;
+use App\Http\Controllers\api\RoleController;
+use App\Http\Controllers\api\SizeController;
+use App\Http\Controllers\api\StaffController;
 use App\Http\Controllers\api\StockController;
 use App\Http\Controllers\api\SubCategoryController;
+use App\Http\Controllers\api\SupplierController;
 use App\Http\Controllers\api\TransportController;
 use App\Http\Controllers\api\UsersController;
-use App\Http\Controllers\api\admin\apicategory;
-use App\Http\Controllers\api\admin\apibrand;
-use App\Http\Controllers\api\admin\apicart;
-use App\Http\Controllers\api\admin\apisub_category;
-use App\Http\Controllers\api\admin\apiprice;
-use App\Http\Controllers\api\admin\apisupplier;
-use App\Http\Controllers\api\admin\apicustomer;
-use App\Http\Controllers\api\admin\apicolor;
-use App\Http\Controllers\api\admin\apinews;
-use App\Http\Controllers\api\admin\apisize;
-use App\Http\Controllers\api\admin\apiproduct;
-use App\Http\Controllers\api\admin\apiorders;
-use App\Http\Controllers\api\admin\apiorders_detail;
-use App\Http\Controllers\api\admin\apiorders_status;
-use App\Http\Controllers\api\admin\apipayment;
-use App\Http\Controllers\api\admin\apiposition;
-use App\Http\Controllers\api\admin\apirole;
-use App\Http\Controllers\api\admin\apistaff;
-use App\Http\Controllers\api\admin\apitransport;
-use App\Http\Controllers\api\admin\apiUpload;
-use App\Http\Controllers\api\admin\apiusers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -73,41 +63,20 @@ Route::get('cart/get-cart/{customer}', [CartController::class, 'getCart']);
 Route::get('orders/get-orders/{customer}', [OrdersController::class, 'getOrders']);
 
 
-<<<<<<< HEAD
-=======
-// <<<<<<< HEAD
->>>>>>> ce7ab433a64496cf645e87b6566979f2c6046c29
-Route::resource('category',apicategory::class);
-Route::resource('brand',apibrand::class);
-Route::resource('cart',apicart::class);
-Route::resource('customer',apicustomer::class);
-Route::resource('sub_category',apisub_category::class);
-Route::resource('price',apiprice::class);
-Route::resource('supplier',apisupplier::class);
-Route::resource('color',apicolor::class);
-Route::resource('size',apisize::class);
-Route::resource('product',apiproduct::class);
-Route::resource('order',apiorders::class);
-Route::resource('order_detail',apiorders_detail::class);
-Route::resource('order_status',apiorders_status::class);
-Route::resource('staff',apistaff::class);
-Route::resource('position',apiposition::class);
-Route::resource('role',apirole::class);
-Route::resource('user',apiusers::class);
-Route::resource('news',apinews::class);
-Route::resource('payment',apipayment::class);
-Route::resource('position',apiposition::class);
-Route::resource('role',apirole::class);
-Route::resource('transport',apitransport::class);
+Route::resource('brand',BrandController::class);
+Route::resource('price',PriceController::class);
+Route::resource('supplier',SupplierController::class);
+Route::resource('color',ColorController::class);
+Route::resource('size',SizeController::class);
+Route::resource('product',ProductController::class);
+Route::resource('orders_status',OrdersStatusController::class);
+Route::resource('staff',StaffController::class);
+Route::resource('position',PositionController::class);
+Route::resource('role',RoleController::class);
+Route::resource('news',NewsController::class);
 Route::post('upload',[apiUpload::class, "uploadFile"]);
-Route::post('user/getbyusername',[apiusers::class, "GetbyUsername"]);
+Route::post('user/getbyusername',[UsersController::class, "GetbyUsername"]);
+Route::post('customers/get-customer', [CustomerController::class, 'getCustomers']);
 
-
-<<<<<<< HEAD
-=======
-// =======
-// >>>>>>> 87b4f072298739faeb85f65317dd6524c651c463
->>>>>>> ce7ab433a64496cf645e87b6566979f2c6046c29
-//[ not used ]
 Route::resource('stocks', StockController::class);
 

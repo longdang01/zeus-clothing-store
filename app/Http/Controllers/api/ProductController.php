@@ -98,7 +98,25 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('product')->insert([
+            'sub_category_id' => $request->sub_category_id,
+            'supplier_id' => $request->supplier_id,
+            'brand_id' => $request->brand_id,
+            'product_code' => $request->product_code,
+            'product_name' => $request->product_name,
+            'origin' => $request->origin,
+            'material' => $request->material,
+            'style' => $request->style,
+            'gender' => 1,
+            'size_table' => $request->size_table,
+            'description' => $request->description,
+            'is_active' => 1
+        ]);
+        return DB::table('product')
+        ->select('*')
+        ->orderBy('id', 'desc')
+        ->take(1)
+        ->get();
     }
 
     /**
@@ -136,7 +154,22 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('product')
+        ->where('id', $request->id)
+        ->update([
+            'sub_category_id' => $request->sub_category_id,
+            'supplier_id' => $request->supplier_id,
+            'brand_id' => $request->brand_id,
+            'product_code' => $request->product_code,
+            'product_name' => $request->product_name,
+            'origin' => $request->origin,
+            'material' => $request->material,
+            'style' => $request->style,
+            'gender' => 1,
+            'size_table' => $request->size_table,
+            'description' => $request->description,
+            'is_active' => $request->is_active
+        ]);
     }
 
     /**
@@ -147,6 +180,7 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        product::findOrFail($id)->delete();
+        return "Deleted";
     }
 }

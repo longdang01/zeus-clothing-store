@@ -2,7 +2,7 @@
 app.controller('order', function($scope, $http) { //tao 1 controller
     $http({
         method: "GET",
-        url: "http://localhost:8000/api/order"
+        url: "http://localhost:8000/api/orderss"
     }).then(function(response) {
         $scope.orders= response.data;
         $scope.orders.forEach(function(e){
@@ -17,13 +17,13 @@ app.controller('order', function($scope, $http) { //tao 1 controller
         $scope.id = id;
         $http({
             method: "GET",
-            url: "http://localhost:8000/api/order_detail/" + id
+            url: "http://localhost:8000/api/ordersDetails/" + id
         }).then(function(response) {
             $scope.orders_detail = response.data;
         });
         $http({
             method: "GET",
-            url: "http://localhost:8000/api/order_status/" + id
+            url: "http://localhost:8000/api/orders_status/" + id
         }).then(function(response) {
             $scope.orders_status = response.data;
         });
@@ -39,7 +39,7 @@ app.controller('order', function($scope, $http) { //tao 1 controller
     $scope.status_changed = function(id,status) {
         $http({
             method: "PUT",
-            url: "http://localhost:8000/api/order/" + id,
+            url: "http://localhost:8000/api/orderss/" + id,
             data: {
                 'status': status
             },
@@ -65,10 +65,9 @@ app.controller('order', function($scope, $http) { //tao 1 controller
                 $scope.status.status_name = "Giao hàng thành công"
                 break;
         }
-        console.log($scope.status);
         $http({
             method: "POST",
-            url: "http://localhost:8000/api/order_status",
+            url: "http://localhost:8000/api/orders_status",
             data: $scope.status,
             "content-Type": "application/json"
         }).then(function(response) {
@@ -81,7 +80,7 @@ app.controller('order', function($scope, $http) { //tao 1 controller
 
         $http({
             method: "POST",
-            url: "http://localhost:8000/api/order_status",
+            url: "http://localhost:8000/api/orders_status",
             data: $scope.status,
             "content-Type": "application/json"
         }).then(function(response) {

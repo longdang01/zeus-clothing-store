@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\news;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class NewsController extends Controller
 {
@@ -14,9 +17,8 @@ class NewsController extends Controller
      */
     public function index()
     {
-        //
+        return news::with('staff')->get();
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -35,7 +37,13 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('news')->insert([
+            'staff_id' => $request->staff_id,
+            'title' => $request->title,
+            'content' => $request->content,
+            'date_create' => Carbon::parse($request->date_create)->format('Y-m-d')
+        ]);
+        return news::with("staff")->orderBy("id","desc")->first();
     }
 
     /**
@@ -46,7 +54,7 @@ class NewsController extends Controller
      */
     public function show($id)
     {
-        //
+        return news::with('staff')->findOrFail($id);
     }
 
     /**
@@ -67,9 +75,16 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        DB::table('news')
+              ->where('id', $request->id)
+              ->update([
+                'staff_id' => $request->staff_id,
+                'title' => $request->title,
+                'content' => $request->content,
+                'date_create' => Carbon::parse($request->date_create)->format('Y-m-d')
+              ]);
     }
 
     /**
@@ -80,6 +95,7 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        news::findOrFail($id)->delete();
+        return "Deleted";
     }
 }

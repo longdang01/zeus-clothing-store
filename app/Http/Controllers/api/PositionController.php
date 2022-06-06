@@ -4,6 +4,9 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\position;
+use Illuminate\Support\Facades\DB;
+
 
 class PositionController extends Controller
 {
@@ -14,7 +17,7 @@ class PositionController extends Controller
      */
     public function index()
     {
-        //
+        return position::all();
     }
 
     /**
@@ -35,7 +38,12 @@ class PositionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('position')->insert([
+            'position_name' => $request->position_name,
+            'description' => $request->description,
+            'quantity' => $request->quantity
+        ]);
+        return position::orderBy("id","desc")->first();
     }
 
     /**
@@ -46,7 +54,7 @@ class PositionController extends Controller
      */
     public function show($id)
     {
-        //
+        return position::findOrFail($id);
     }
 
     /**
@@ -69,7 +77,13 @@ class PositionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('position')
+              ->where('id', $request->id)
+              ->update([
+                'position_name' => $request->position_name,
+                'description' => $request->description,
+                'quantity' => $request->quantity
+              ]);
     }
 
     /**
@@ -80,6 +94,7 @@ class PositionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        position::findOrFail($id)->delete();
+        return "Deleted";
     }
 }

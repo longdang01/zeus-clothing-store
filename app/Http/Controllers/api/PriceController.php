@@ -4,6 +4,10 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\price;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+use DateTime;
 
 class PriceController extends Controller
 {
@@ -14,7 +18,7 @@ class PriceController extends Controller
      */
     public function index()
     {
-        //
+        return price::all();
     }
 
     /**
@@ -35,7 +39,21 @@ class PriceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->id != -1){
+            DB::table('price')
+            ->where('id', $request->id)
+            ->update([
+              'end_date' => Carbon::parse(Carbon::now())->format('Y-m-d'),
+              'active' => 0
+            ]);
+        }
+        DB::table('price')->insert([
+            'product_id' => $request->product_id,
+            'price' => $request->price,
+            'start_date' => Carbon::parse(Carbon::now())->format('Y-m-d'),
+            'active' => 1
+        ]);
+        
     }
 
     /**
@@ -46,7 +64,7 @@ class PriceController extends Controller
      */
     public function show($id)
     {
-        //
+        return price::findOrFail($id);
     }
 
     /**
@@ -69,7 +87,12 @@ class PriceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('price')->insert([
+            'product_id' => $id,
+            'price' => $request->price,
+            'start_date' => Carbon::parse(Carbon::now())->format('Y-m-d'),
+            'active' => 1
+        ]);
     }
 
     /**
@@ -80,6 +103,7 @@ class PriceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        price::findOrFail($id)->delete();
+        return "Deleted";
     }
 }

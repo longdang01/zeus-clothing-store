@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -41,7 +42,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('category')->insert([
+            'category_name' => $request->category_name,
+            'description' => $request->description
+        ]);
+        return category::orderBy('id', 'desc')
+                ->first();
     }
 
     /**
@@ -52,7 +58,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        return category::findOrFail($id);
     }
 
     /**
@@ -75,7 +81,9 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('category')
+        ->where('id', $request->id)
+        ->update(['category_name' => $request->category_name,'description' => $request->description]);
     }
 
     /**
@@ -86,6 +94,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        category::findOrFail($id)->delete();
+        return "Deleted";
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Models\Transport;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TransportController extends Controller
 {
@@ -36,7 +37,13 @@ class TransportController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('transport')->insert([
+            'transport_type' => $request->transport_type,
+            'description' => $request->description!=null?$request->description:"",
+            'fee' => $request->fee,
+            'status' => $request->status
+        ]);
+        return transport::orderBy("id","desc")->first();
     }
 
     /**
@@ -47,7 +54,7 @@ class TransportController extends Controller
      */
     public function show($id)
     {
-        return Transport::findOrFail($id);
+        return transport::findOrFail($id);
     }
 
     /**
@@ -70,7 +77,14 @@ class TransportController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('transport')
+              ->where('id', $request->id)
+              ->update([
+                'transport_type' => $request->transport_type,
+                'description' => $request->description!=null?$request->description:"",
+                'fee' => $request->fee,
+                'status' => $request->status
+              ]);
     }
 
     /**
@@ -81,6 +95,7 @@ class TransportController extends Controller
      */
     public function destroy($id)
     {
-        //
+        transport::findOrFail($id)->delete();
+        return "Deleted";
     }
 }

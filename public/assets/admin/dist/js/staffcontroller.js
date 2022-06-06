@@ -97,7 +97,7 @@ app.controller('staff', function($scope, $http) { //tao 1 controller
                 else{
                     $http({
                         method: "POST",
-                        url: "http://localhost:8000/api/user",
+                        url: "http://localhost:8000/api/users",
                         data: $scope.staff.users,
                         "content-Type": "application/json"
                     }).then(function(response) {
@@ -140,7 +140,7 @@ app.controller('staff', function($scope, $http) { //tao 1 controller
             $scope.staff.picture = $avatar[$avatar.length-1]==""?$scope.staff.picture:$avatar[$avatar.length-1];
             $http({
                 method: "PUT",
-                url: "http://localhost:8000/api/user/" + $scope.staff.users_id,
+                url: "http://localhost:8000/api/users/" + $scope.staff.users_id,
                 data: $scope.staff.users,
                 "content-Type": "application/json"
             }).then(function(response) {

@@ -2,10 +2,10 @@
 app.controller('category', function($scope, $http) { //tao 1 controller
     $http({
         method: "GET",
-        url: "http://localhost:8000/api/category"
+        url: "http://localhost:8000/api/categories"
     }).then(function(response) {
-        console.log(response.data);
-        $scope.categories= response.data;
+        $scope.categories= response.data[0];
+        console.log($scope.categories);
     });
     $scope.showmodal = function(id) {;
         $scope.id = id;
@@ -16,7 +16,7 @@ app.controller('category', function($scope, $http) { //tao 1 controller
             $scope.modalTitle = "Edit product category";     
             $http({
                 method: "GET",
-                url: "http://localhost:8000/api/category/" + id
+                url: "http://localhost:8000/api/categories/" + id
             }).then(function(response) {
                 $scope.category = response.data;
             });
@@ -28,7 +28,7 @@ app.controller('category', function($scope, $http) { //tao 1 controller
         if (hoi) {
             $http({
                 method: "DELETE",
-                url: "http://localhost:8000/api/category/" + id
+                url: "http://localhost:8000/api/categories/" + id
             }).then(function(response) {
                 $scope.categories.pop(id);
             });
@@ -38,7 +38,7 @@ app.controller('category', function($scope, $http) { //tao 1 controller
         if ($scope.id == 0) { //dang them tin moi
             $http({
                 method: "POST",
-                url: "http://localhost:8000/api/category",
+                url: "http://localhost:8000/api/categories",
                 data: $scope.category,
                 "content-Type": "application/json"
             }).then(function(response) {
@@ -47,7 +47,7 @@ app.controller('category', function($scope, $http) { //tao 1 controller
         } else { //sua tin
             $http({
                 method: "PUT",
-                url: "http://localhost:8000/api/category/" + $scope.id,
+                url: "http://localhost:8000/api/categories/" + $scope.id,
                 data: $scope.category,
                 "content-Type": "application/json"
             }).then(function(response) {

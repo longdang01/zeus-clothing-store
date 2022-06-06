@@ -2,7 +2,7 @@
 app.controller('transport', function($scope, $http) { //tao 1 controller
     $http({
         method: "GET",
-        url: "http://localhost:8000/api/transport"
+        url: "http://localhost:8000/api/transports"
     }).then(function(response) {
         console.log(response.data);
         $scope.transports= response.data;
@@ -16,7 +16,7 @@ app.controller('transport', function($scope, $http) { //tao 1 controller
             $scope.modalTitle = "Edit transport";     
             $http({
                 method: "GET",
-                url: "http://localhost:8000/api/transport/" + id
+                url: "http://localhost:8000/api/transports/" + id
             }).then(function(response) {
                 $scope.transport = response.data;
                 $scope.transport.status = $scope.transport.status + "";
@@ -29,7 +29,7 @@ app.controller('transport', function($scope, $http) { //tao 1 controller
         if (hoi) {
             $http({
                 method: "DELETE",
-                url: "http://localhost:8000/api/transport/" + id
+                url: "http://localhost:8000/api/transports/" + id
             }).then(function(response) {
                 $scope.transports.pop(id);
             },function(e){
@@ -41,7 +41,7 @@ app.controller('transport', function($scope, $http) { //tao 1 controller
         if ($scope.id == 0) { //dang them tin moi
             $http({
                 method: "POST",
-                url: "http://localhost:8000/api/transport",
+                url: "http://localhost:8000/api/transports",
                 data: $scope.transport,
                 "content-Type": "application/json"
             }).then(function(response) {
@@ -52,7 +52,7 @@ app.controller('transport', function($scope, $http) { //tao 1 controller
         } else { //sua tin
             $http({
                 method: "PUT",
-                url: "http://localhost:8000/api/transport/" + $scope.id,
+                url: "http://localhost:8000/api/transports/" + $scope.id,
                 data: $scope.transport,
                 "content-Type": "application/json"
             }).then(function(response) {

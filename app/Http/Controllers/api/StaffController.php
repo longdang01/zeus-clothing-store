@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\staff;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class StaffController extends Controller
 {
@@ -14,7 +17,7 @@ class StaffController extends Controller
      */
     public function index()
     {
-        //
+        return staff::with('users','position','role')->get();
     }
 
     /**
@@ -35,7 +38,20 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('staff')->insert([
+            'username' => $request->username,
+            'position_id' => $request->position_id,
+            'role_id' => $request->role_id,
+            'staff_name' => $request->staff_name,
+            'picture' => $request->picture!=null?$request->picture:"",
+            'dob' => Carbon::parse($request->dob)->format('Y-m-d'),
+            'address' => $request->address,
+            'phone' => $request->phone,
+            'email' => $request->email
+        ]);
+        return staff::with('users',"role","position")
+        ->where('username','=',$request->username)
+        ->first();
     }
 
     /**
@@ -46,7 +62,9 @@ class StaffController extends Controller
      */
     public function show($id)
     {
-        //
+        return staff::with('users')
+        ->where('id','=',$id)
+        ->first();
     }
 
     /**
@@ -69,7 +87,18 @@ class StaffController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('staff')
+              ->where('id', $request->id)
+              ->update([
+                'position_id' => $request->position_id,
+                'role_id' => $request->role_id,
+                'staff_name' => $request->staff_name,
+                'picture' => $request->picture!=null?$request->picture:"",
+                'dob' => Carbon::parse($request->dob)->format('Y-m-d'),
+                'address' => $request->address,
+                'phone' => $request->phone,
+                'email' => $request->email
+              ]);
     }
 
     /**
@@ -80,6 +109,7 @@ class StaffController extends Controller
      */
     public function destroy($id)
     {
-        //
+        staff::findOrFail($id)->delete();
+        return "Deleted";
     }
 }

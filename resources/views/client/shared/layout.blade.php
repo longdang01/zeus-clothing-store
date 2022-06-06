@@ -37,7 +37,7 @@
 
 </head>
 <body ng-app="App">
-    <div class="app" ng-controller="AppController">
+    <div class="app">
 
         <!-- Preloader -->
         <div class="preloader">

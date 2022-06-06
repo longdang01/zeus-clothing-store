@@ -3,18 +3,15 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BrandController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        return Brand::all();
     }
 
     /**
@@ -35,27 +32,32 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('brand')->insert([
+            'brand_name' => $request->brand_name,
+            'description' => $request->description
+        ]);
+        return Brand::orderBy('id', 'desc')
+                ->first();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\brand  $brand
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        return Brand::findOrFail($id);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(brand $brand)
     {
         //
     }
@@ -64,22 +66,25 @@ class BrandController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        DB::table('brand')
+              ->where('id', $request->id)
+              ->update(['brand_name' => $request->brand_name,'description' => $request->description]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\brand  $brand
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        Brand::findOrFail($id)->delete();
+        return "Deleted";
     }
 }

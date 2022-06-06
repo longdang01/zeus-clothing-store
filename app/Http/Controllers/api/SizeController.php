@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\size;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SizeController extends Controller
 {
@@ -14,7 +16,7 @@ class SizeController extends Controller
      */
     public function index()
     {
-        //
+        return size::all();
     }
 
     /**
@@ -35,7 +37,18 @@ class SizeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('size')->insert([
+            'color_id' => $request->color_id,
+            'size_name' => $request->size_name,
+            'quantity' => $request->quantity,
+            'status' => $request->status
+        ]);
+        $id =DB::table('size')
+        ->select('id')
+        ->orderBy('id', 'desc')
+        ->take(1)
+        ->get();
+        return $id;
     }
 
     /**
@@ -46,7 +59,7 @@ class SizeController extends Controller
      */
     public function show($id)
     {
-        //
+        return size::findOrFail($id);
     }
 
     /**
@@ -69,7 +82,13 @@ class SizeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('size')
+              ->where('id', $request->id)
+              ->update([
+                'size_name' => $request->size_name,
+                'quantity' => $request->quantity,
+                'status' => $request->status
+              ]);
     }
 
     /**
@@ -80,6 +99,7 @@ class SizeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        size::findOrFail($id)->delete();
+        return "Deleted";
     }
 }

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\color;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ColorController extends Controller
 {
@@ -14,7 +16,7 @@ class ColorController extends Controller
      */
     public function index()
     {
-        //
+        return color::all();
     }
 
     /**
@@ -35,7 +37,19 @@ class ColorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('color')->insert([
+            'product_id' => $request->product_id,
+            'color_name' => $request->color_name,
+            'hex' => $request->hex,
+            'avatar' => $request->avatar!=null?$request->avatar:"",
+            'images' => $request->images!=null?$request->images:""
+        ]);
+        return DB::table('color')
+        ->select('*')
+        ->where('product_id','=',$request->product_id)
+        ->orderBy('id', 'desc')
+        ->take(1)
+        ->get();
     }
 
     /**
@@ -46,7 +60,9 @@ class ColorController extends Controller
      */
     public function show($id)
     {
-        //
+        return color::with("sizes")
+        ->where("id","=",$id)
+        ->get();
     }
 
     /**
@@ -69,7 +85,15 @@ class ColorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $color = color::find($id);
+        DB::table('color')
+              ->where('id', $id)
+              ->update([
+                'color_name' => $request->color_name,
+                'hex' => $request->hex,
+                'avatar' => $request->avatar!=null||""?$request->avatar:$color->avatar,
+                'images' => $request->images!=null?$request->images:$color->images
+              ]);
     }
 
     /**
@@ -80,6 +104,7 @@ class ColorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        color::findOrFail($id)->delete();
+        return "Deleted";
     }
 }

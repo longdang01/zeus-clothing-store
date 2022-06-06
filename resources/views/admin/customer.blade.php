@@ -43,7 +43,7 @@
             <tr dir-paginate="item in customers|itemsPerPage:5">
               <td>@{{$index+1}}</td>
               <td>@{{item.customer_name}}</td>
-              <td><img style="width: 60px" src="/upload/customer/@{{item.picture}}"></td>
+              <td><img style="width: 60px" src="/upload/customer/@{{item.picture!=null&&item.picture!=''?item.picture:'add.jpg'}}"></td>
               <td>@{{item.dob}}</td>
               <td>@{{item.address}}</td>
               <td>@{{item.phone}}</td>

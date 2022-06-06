@@ -1,10 +1,9 @@
 
 app.controller('customer', function($scope, $http) { //tao 1 controller
     $http({
-        method: "GET",
-        url: "http://localhost:8000/api/customer"
+        method: "POST",
+        url: "http://localhost:8000/api/customers/get-customer"
     }).then(function(response) {
-        console.log(response.data);
         $scope.customers= response.data;
     });
     $scope.showmodal = function(id) {;
@@ -16,7 +15,7 @@ app.controller('customer', function($scope, $http) { //tao 1 controller
             $scope.modalTitle = "Edit customer";     
             $http({
                 method: "GET",
-                url: "http://localhost:8000/api/customer/" + id
+                url: "http://localhost:8000/api/customers/" + id
             }).then(function(response) {
                 $scope.customer = response.data;
                 $scope.customer.dob = new Date($scope.customer.dob);
@@ -51,7 +50,7 @@ app.controller('customer', function($scope, $http) { //tao 1 controller
         if (hoi) {
             $http({
                 method: "DELETE",
-                url: "http://localhost:8000/api/customer/" + id
+                url: "http://localhost:8000/api/customers/" + id
             }).then(function(response) {
                 $scope.message = response.data;
                 location.reload();
@@ -65,7 +64,7 @@ app.controller('customer', function($scope, $http) { //tao 1 controller
         if ($scope.id == 0) { //dang them tin moi
             $http({
                 method: "POST",
-                url: "http://localhost:8000/api/customer",
+                url: "http://localhost:8000/api/customers",
                 data: $scope.customer,
                 "content-Type": "application/json"
             }).then(function(response) {
@@ -77,7 +76,7 @@ app.controller('customer', function($scope, $http) { //tao 1 controller
         } else { //sua tin
             $http({
                 method: "PUT",
-                url: "http://localhost:8000/api/customer/" + $scope.id,
+                url: "http://localhost:8000/api/customers/" + $scope.id,
                 data: $scope.customer,
                 "content-Type": "application/json"
             }).then(function(response) {
