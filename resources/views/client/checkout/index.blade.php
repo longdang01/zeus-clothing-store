@@ -37,8 +37,12 @@
                                 <tbody>
                                     <tr ng-repeat="product in cart.cart_details">
                                         <td>
-                                            <img ng-src="@{{ product.color.avatar }}" 
-                                            alt="">
+                                            <!-- <img ng-src="@{{ product.color.avatar }}" 
+                                            alt=""> -->
+                                            <img ng-if="!(product.color.avatar.substring(0, 5) === 'https')" ng-src="/upload/product/@{{ product.product_id }}/@{{ product.color.avatar }}"
+                                            class="product__img">
+                                            <img ng-if="(product.color.avatar.substring(0, 5) === 'https')" ng-src="@{{ product.color.avatar }}"
+                                            class="product__img">
                                         </td>
                                         <td>
                                             <a href="#">@{{ product.product.product_name }}</a>

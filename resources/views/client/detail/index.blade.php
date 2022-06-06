@@ -20,13 +20,17 @@
 
                                 <div class="slide__gallery-thumbs">
                                     <div ng-repeat="image in selectedColor.listImages track by $index">
-                                        <img ng-src="@{{ image }}" class="show" alt="">
+                                        <!-- <img ng-src="@{{ image }}" class="show" alt=""> -->
+                                        <img ng-if="(image.substring(0, 5) === 'https')" ng-src="@{{ image }}" class="show" alt="">
+                                        <img ng-if="!(image.substring(0, 5) === 'https')" ng-src="/upload/product/@{{ product.id }}/@{{ image }}" class="show" alt="">
                                     </div>
                                 </div>
                                 
                                 <div class="slide__gallery">
                                     <div ng-repeat="image in selectedColor.listImages track by $index">
-                                        <img ng-src="@{{ image }}" class="show" alt="">
+                                        <!-- <img ng-src="@{{ image }}" class="show" alt=""> -->
+                                        <img ng-if="(image.substring(0, 5) === 'https')" ng-src="@{{ image }}" class="show" alt="">
+                                        <img ng-if="!(image.substring(0, 5) === 'https')" ng-src="/upload/product/@{{ product.id }}/@{{ image }}" class="show" alt="">
                                     </div>
                                 </div>       
                         </div>

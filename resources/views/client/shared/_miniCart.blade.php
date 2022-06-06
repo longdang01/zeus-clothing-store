@@ -16,8 +16,12 @@
                     <div class="row">
                         <div ng-repeat="product in cart.cart_details" class="col-lg-12">
                             <div class="mini__cart-item">
-                                <a href="#">
-                                    <img ng-src="@{{ product.color.avatar }}" class="mini__cart-item-picture" />
+                                <a href="#" style="display: inline-block; height: 100%">
+                                    <!-- <img ng-src="@{{ product.color.avatar }}" class="mini__cart-item-picture" /> -->
+                                    <img ng-if="!(product.color.avatar.substring(0, 5) === 'https')" ng-src="/upload/product/@{{ product.product_id }}/@{{ product.color.avatar }}"
+                                            class="mini__cart-item-picture">
+                                        <img ng-if="(product.color.avatar.substring(0, 5) === 'https')" ng-src="@{{ product.color.avatar }}"
+                                        class="mini__cart-item-picture">
                                 </a>
                                 <div class="mini__cart-item-info">
                                     <a href="#">@{{ product.product.product_name }}</a>
