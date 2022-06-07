@@ -227,7 +227,11 @@
                                     <div class="product__wrap-img">
                                         <a ng-click="goDetail(product)"
                                         href='@{{ url }}'>
-                                            <img ng-src="@{{ product.color[0].avatar }}"
+                                            <!-- <img ng-src="@{{ product.color[0].avatar }}"
+                                            class="product__img"> -->
+                                            <img ng-if="!(product.color[0].avatar.substring(0, 5) === 'https')" ng-src="/upload/product/@{{ product.id }}/@{{ product.color[0].avatar }}"
+                                            class="product__img">
+                                            <img ng-if="(product.color[0].avatar.substring(0, 5) === 'https')" ng-src="@{{ product.color[0].avatar }}"
                                             class="product__img">
                                         </a>
         

@@ -52,9 +52,14 @@
                         <tbody>
                             <tr ng-repeat="item in ordersItem.orders_details">
                                 <td style="text-align: left">
-                                    <img ng-src="@{{ item.color.avatar }}"
+                                    <!-- <img ng-src="@{{ item.color.avatar }}"
                                     style="width: 50px; height: 50px; object-fit: cover"
-                                    alt="">
+                                    alt=""> -->
+                                    <img ng-if="!(item.color.avatar.substring(0, 5) === 'https')"
+                                     ng-src="/upload/product/@{{ item.product_id }}/@{{ item.color.avatar }}"
+                                            style="width: 50px; height: 50px; object-fit: cover">
+                                        <img ng-if="(item.color.avatar.substring(0, 5) === 'https')" ng-src="@{{ item.color.avatar }}"
+                                        style="width: 50px; height: 50px; object-fit: cover">
                                 </td>
                                 <td style="padding-left: 1rem">
                                     <a href="#">@{{ item.product.product_name }}</a>
