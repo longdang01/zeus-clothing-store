@@ -7,6 +7,7 @@ use App\Models\Cart;
 use App\Models\CartDetail;
 use App\Models\Orders;
 use App\Models\OrdersDetail;
+use App\Models\Size;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -60,13 +61,12 @@ class OrdersController extends Controller
 
         $orders->save();
 
-        $cart = (new CartController)->getCart($request->customer_id);
-        $cartDetails = $cart->cart_details;
+        //get list cartDetails
+        // $cart = (new CartController)->getCart($request->customer_id);
+        // $cartDetails = $cart->cart_details;
         $cartDetails = $request->cartDetails;
         
-        // $cart = new Cart();
-        // $cart = $cart->getCart($request->customer_id);
-        foreach( (array) $cartDetails as $item) {
+        foreach($cartDetails as $item) {
             $ordersDetail = new OrdersDetail();
             $ordersDetail->orders_id= $orders->id;
             $ordersDetail->product_id = $item['product_id'];
@@ -74,12 +74,16 @@ class OrdersController extends Controller
             $ordersDetail->size_id = $item['size_id'];
             $ordersDetail->quantity = $item['quantity'];
             $ordersDetail->price = $item['price'];
-    
+            
+            //update size
+            $size = new Size();
+            $size->updateSize($item, 1);
+
             $ordersDetail->save();
         }
 
-        CartDetail::truncate($cart->id);
-
+        //remove cart after order
+        DB::table("cart_detail")->where("cart_id", $cartDetails[0]['cart_id'])->delete();
     }
 
     /**
@@ -90,7 +94,7 @@ class OrdersController extends Controller
      */
     public function show($id)
     {
-        return orders::with('customer','payment','transport','ordersDetail','ordersStatus')
+        return orders::with('customer','payment','transport','ordersDetails','ordersStatus')
         ->where("id","=",$id)
         ->first();
     }
@@ -131,7 +135,14 @@ class OrdersController extends Controller
      */
     public function destroy($id)
     {
-        Orders::findOrFail($id)->delete();
+        $orders = $this->show($id); 
+
+        foreach($orders->ordersDetails as $item) {
+            $size = new Size();
+            $size->updateSize($item, 2);
+        }
+        
+        $orders->delete();
         DB::table("orders_detail")->where("orders_id", $id)->delete();
     }
 }

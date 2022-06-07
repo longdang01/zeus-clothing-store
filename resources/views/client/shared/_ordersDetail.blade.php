@@ -15,6 +15,10 @@
                                 <span>@{{ ordersItem.customer.customer_name }}</span>
                             </div>
                             <div class="mb-3">
+                                <label for="">SĐT: </label>
+                                <span>@{{ ordersItem.customer.phone }}</span>
+                            </div>
+                            <div class="mb-3">
                                 <label for="">Ngày đặt: </label>
                                 <span>@{{ ordersItem.order_date.slice(0, 10) }}</span>
                             </div>

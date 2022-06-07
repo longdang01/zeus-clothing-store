@@ -87,8 +87,4 @@ class CartDetailController extends Controller
     {
         CartDetail::findOrFail($id)->delete();
     }
-    public function truncate($cart_id)
-    {
-        CartDetail::get()->where('cart_id', $cart_id)->delete();
-    }
 }

@@ -23,4 +23,5 @@ class CartDetail extends Model
         return $this->belongsTo(Size::class, 'size_id');
     } 
 
+    
 }

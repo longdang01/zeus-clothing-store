@@ -126,7 +126,7 @@
     <nav class="header__navbar">
         <div class="container">
             <div class="row">
-                <div class="@{{ (page === '/home' || page === '/') ? 'col-lg-3 text-start' : 'hide'}}">
+                <div class="@{{ (page === '/home' || page === '/' || page === '/home#') ? 'col-lg-3 text-start' : 'hide'}}">
                     <div class="header__navbar-category">
                         <h3>
                             <i class="ti-align-left"></i>
@@ -165,7 +165,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="@{{ (page === '/home' || page === '/') ? 'col-lg-7' : 'col-lg-10' }}" >
+                <div class="@{{ (page === '/home' || page === '/' || page === '/home#') ? 'col-lg-7' : 'col-lg-10' }}" >
                     <ul class="header__navbar-list">
                         <li class="header__navbar-item">
                             <a href="#" class="header__navbar-item-link active">Trang chủ</a>
