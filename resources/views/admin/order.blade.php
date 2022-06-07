@@ -107,7 +107,7 @@
                       </section>
                     </div>
                     <div class="col-md-12 col-lg-5 col-xl-5">
-                      <h5>List status <button class="btn btn-primary" style="float: right;" ng-click="showmodal_status()">Update status</button></h5>
+                      <h5>List status <button id="btn-update-status" class="btn btn-primary" style="float: right;" ng-click="showmodal_status()">Update status</button></h5>
                       <section class="content">
                         <div class="container-fluid">
                           <table class="table">

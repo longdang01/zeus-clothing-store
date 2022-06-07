@@ -10,6 +10,7 @@ use App\Models\SubCategory;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class ProductController extends Controller
 {
@@ -110,7 +111,9 @@ class ProductController extends Controller
             'gender' => 1,
             'size_table' => $request->size_table,
             'description' => $request->description,
-            'is_active' => 1
+            'is_active' => 1,
+            'created_at' => Carbon::parse(Carbon::now()),
+            'updated_at'=> Carbon::parse(Carbon::now()),
         ]);
         return DB::table('product')
         ->select('*')
@@ -168,7 +171,8 @@ class ProductController extends Controller
             'gender' => 1,
             'size_table' => $request->size_table,
             'description' => $request->description,
-            'is_active' => $request->is_active
+            'is_active' => $request->is_active,
+            'updated_at'=> Carbon::parse(Carbon::now()),
         ]);
     }
 

@@ -81,6 +81,9 @@ Route::post('customers/get-customer', [CustomerController::class, 'getCustomers'
 //statistic
 Route::post('statistic/getTopCustomer', [apiStatistic::class, 'getTopCustomer']);
 Route::post('statistic/getTopProduct', [apiStatistic::class, 'getTopProduct']);
-Route::get('statistic/getInforProduct', [apiStatistic::class, 'getInforProduct']);
+Route::post('statistic/getNewProducts', [apiStatistic::class, 'getNewProducts']);
+Route::post('statistic/getNewOrders', [apiStatistic::class, 'getNewOrders']);
+Route::post('statistic/getNewCustomers', [apiStatistic::class, 'getNewCustomers']);
+Route::post('statistic/getOrderRate', [apiStatistic::class, 'getOrderRate']);
 Route::resource('stocks', StockController::class);
 

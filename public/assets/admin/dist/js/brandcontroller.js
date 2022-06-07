@@ -1,5 +1,6 @@
 
 app.controller('brand', function($scope, $http) { //tao 1 controller
+    $scope.pageSize = 5;
     $http({
         method: "GET",
         url: "http://localhost:8000/api/brand"

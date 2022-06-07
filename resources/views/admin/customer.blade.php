@@ -23,7 +23,7 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-      <table class="table">
+        <table class="table">
           <thead>
             <tr>
               <th scope="col">#</th>

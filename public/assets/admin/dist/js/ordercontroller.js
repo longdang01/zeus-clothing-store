@@ -27,6 +27,12 @@ app.controller('order', function($scope, $http) { //tao 1 controller
         }).then(function(response) {
             $scope.orders_status = response.data;
         });
+        if($scope.orders.find(e => e.id == $scope.id).status != 2){
+            $('#btn-update-status').attr("hidden",true);
+        }
+        else{
+            $('#btn-update-status').attr("hidden",false);
+        }
         $('#modelId').modal('show');
     }
     $scope.showmodal_status = function() {

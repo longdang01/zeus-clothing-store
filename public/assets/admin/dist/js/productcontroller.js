@@ -1,4 +1,9 @@
 app.controller('product', function($scope, $http,$rootScope) { //tao 1 controller
+    $scope.pageSize = 5;
+    $("#select-pageSize").change(function(){
+        $scope.pageSize = this.value;
+        console.log($scope.pageSize);
+    })
     $http({
         method: "GET",
         url: "http://localhost:8000/api/product"

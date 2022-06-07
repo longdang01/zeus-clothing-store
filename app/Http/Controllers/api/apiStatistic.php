@@ -34,16 +34,47 @@ class apiStatistic extends Controller
         ->get();
         return $res;
     }
-    public function getInforProduct(Request $request)
+    public function getNewOrders(Request $request)
     {
-        $res = DB::table('orders_detail')
-        ->leftJoin('product','orders_detail.product_id','=','product.id')
-        ->select('product_name',DB::raw("SUM(price*quantity) as totalprice"),DB::raw("SUM(quantity) as amount"))
-        ->where(DB::raw('MONTH(orders_detail.created_at)'),$request->month)
-        ->where('orders_detail.product_id',$request->id)
-        ->groupBy("orders_detail.product_id","product.product_name")
-        ->orderBy('amount','desc')
-        ->get();
+        $res = DB::table('orders')
+        ->select(DB::raw("COUNT(id) as amount"))
+        ->where(DB::raw('MONTH(orders.created_at)'),$request->month)
+        ->where(DB::raw('YEAR(orders.created_at)'),$request->year)
+        ->first();
         return $res;
+    }
+    public function getNewCustomers(Request $request)
+    {
+        $res = DB::table('customer')
+        ->select(DB::raw("COUNT(id) as amount"))
+        ->where(DB::raw('MONTH(customer.created_at)'),$request->month)
+        ->where(DB::raw('YEAR(customer.created_at)'),$request->year)
+        ->first();
+        return $res;
+    }
+    public function getNewProducts(Request $request)
+    {
+        $res = DB::table('product')
+        ->select(DB::raw("COUNT(id) as amount"))
+        ->where(DB::raw('MONTH(product.created_at)'),$request->month)
+        ->where(DB::raw('YEAR(product.created_at)'),$request->year)
+        ->first();
+        return $res;
+    }
+    public function getOrderRate(Request $request)
+    {
+        $success = DB::table('orders')
+        ->select(DB::raw("COUNT(id) as amount"))
+        ->where(DB::raw('MONTH(orders.created_at)'),$request->month)
+        ->where(DB::raw('YEAR(orders.created_at)'),$request->year)
+        ->where('status','3')
+        ->first();
+        $failed = DB::table('orders')
+        ->select(DB::raw("COUNT(id) as amount"))
+        ->where(DB::raw('MONTH(orders.created_at)'),$request->month)
+        ->where(DB::raw('YEAR(orders.created_at)'),$request->year)
+        ->where('status','3')
+        ->first();
+        return [$success,$failed];
     }
 }

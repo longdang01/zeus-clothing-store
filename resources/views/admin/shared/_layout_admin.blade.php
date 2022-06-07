@@ -265,6 +265,7 @@
 <script src="/assets/admin/dist/js/angular.min.js"></script>
 <script src="/assets/admin/dist/js/dirPagination.js" type="text/javascript"></script>
 <script src="/assets/admin/dist/js/angular-ckeditor.js"></script>
+<script src="/assets/admin/dist/js/chart.js"></script>
 <script>
     var app = angular.module('app', ['angularUtils.directives.dirPagination','ckeditor']);
     app.controller('search', function($scope,$rootScope){
@@ -277,6 +278,7 @@
       }
     })
     $(document).ready(function(){
+      localStorage.removeItem("customer_id");
       var login = JSON.parse(sessionStorage.getItem('users'));
       if(login == null){
         location.replace('/admin/login');

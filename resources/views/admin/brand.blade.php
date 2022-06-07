@@ -14,6 +14,14 @@
               <li class="breadcrumb-item"><a href="#">Manager</a></li>
               <li class="breadcrumb-item active">Brand</li>
             </ol>
+          </div>
+          <div>
+            <select id="select-pageSize" class="form-select" style="width: 60px;float: left;margin-right:10px;" ng-modal='pageSize'>
+              <option value="5" selected>5</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+            </select> 
+            <p style="line-height: 20px;align-content: center;font-size: 20px;float:left;padding-top: 8px;">Dòng</p>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -34,7 +42,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr dir-paginate="item in brands|itemsPerPage:5">
+            <tr dir-paginate="item in brands| itemsPerPage: pageSize">
               <td>@{{$index+1}}</td>
               <td>@{{item.brand_name}}</td>
               <td>@{{item.description}}</td>
@@ -44,7 +52,7 @@
           </tbody>
         </table>
         <dir-pagination-controls
-            max-size="5"
+            max-size="pageSize"
             direction-links="true"
             boundary-links="true" >
         </dir-pagination-controls>
