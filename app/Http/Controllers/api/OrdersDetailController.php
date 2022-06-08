@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Models\OrdersDetail;
+use App\Models\Size;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -101,7 +102,9 @@ class OrdersDetailController extends Controller
      */
     public function destroy($id)
     {
-        OrdersDetail::findOrFail($id)->delete();
+        $ordersDetail = OrdersDetail::findOrFail($id); 
+        
+        $ordersDetail->delete();
         return "Deleted";
     }
 
