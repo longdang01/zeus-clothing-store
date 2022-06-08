@@ -113,7 +113,7 @@ class ProductController extends Controller
             'description' => $request->description,
             'is_active' => 1,
             'created_at' => Carbon::parse(Carbon::now()),
-            'update_at'=> Carbon::parse(Carbon::now()),
+            'updated_at'=> Carbon::parse(Carbon::now()),
         ]);
         return DB::table('product')
         ->select('*')
@@ -172,7 +172,7 @@ class ProductController extends Controller
             'size_table' => $request->size_table,
             'description' => $request->description,
             'is_active' => $request->is_active,
-            'update_at'=> Carbon::parse(Carbon::now()),
+            'updated_at'=> Carbon::parse(Carbon::now()),
         ]);
     }
 
