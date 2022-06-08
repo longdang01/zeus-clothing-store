@@ -41,10 +41,10 @@
               <td>@{{item.total|number}}</td>
               <td>
                 <select class="custom-select" name="status" id="status" ng-model="item.status" ng-change="status_changed(item.id,item.status)">
-                    <option value="0">Đã hủy</option>   
-                    <option value="1">Chờ lấy hàng</option>
-                    <option value="2">Đang chuyển hàng</option>
-                    <option value="3">Giao hàng thành công</option>
+                    <option value="1">Đã hủy</option>   
+                    <option value="2">Chờ lấy hàng</option>
+                    <option value="3">Đang chuyển hàng</option>
+                    <option value="4">Giao hàng thành công</option>
                 </select>
               </td>
               <td><button class="btn btn-info" ng-click="showmodal(item.id)">&nbsp;Details</button></td>

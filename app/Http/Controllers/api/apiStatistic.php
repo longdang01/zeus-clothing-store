@@ -67,13 +67,13 @@ class apiStatistic extends Controller
         ->select(DB::raw("COUNT(id) as amount"))
         ->where(DB::raw('MONTH(orders.created_at)'),$request->month)
         ->where(DB::raw('YEAR(orders.created_at)'),$request->year)
-        ->where('status','3')
+        ->where('status','4')
         ->first();
         $failed = DB::table('orders')
         ->select(DB::raw("COUNT(id) as amount"))
         ->where(DB::raw('MONTH(orders.created_at)'),$request->month)
         ->where(DB::raw('YEAR(orders.created_at)'),$request->year)
-        ->where('status','3')
+        ->where('status','1')
         ->first();
         return [$success,$failed];
     }

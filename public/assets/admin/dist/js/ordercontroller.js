@@ -58,16 +58,16 @@ app.controller('order', function($scope, $http) { //tao 1 controller
             'status_name': ""
         } 
         switch(status) {
-            case "0":
+            case "1":
                 $scope.status.status_name = "Đã hủy";
                 break;
-            case "1":
+            case "2":
                 $scope.status.status_name = "Chờ lấy hàng"
                 break;
-            case "2":
+            case "3":
                 $scope.status.status_name = "Đang chuyển hàng"
                 break;
-            case "3":
+            case "4":
                 $scope.status.status_name = "Giao hàng thành công"
                 break;
         }

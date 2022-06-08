@@ -56,7 +56,7 @@ class OrdersController extends Controller
         $orders->delivery_address = $request->delivery_address;
         $orders->note = '';
         $orders->total = $request->total;
-        $orders->status = 1;
+        $orders->status = 0;
 
         $orders->save();
 

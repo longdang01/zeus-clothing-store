@@ -156,7 +156,7 @@
         <div class="row">
           <div class="col-lg-6">
             <div class="card">
-              <canvas id="doughutChart"></canvas>
+              <canvas id="doughnutChart"></canvas>
             </div>
           </div>
           <div class="col-lg-6">
