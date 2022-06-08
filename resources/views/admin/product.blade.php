@@ -166,7 +166,11 @@
                             <div class="form-group">
                                 <label>Description:</label>
                                 <div>
-                                    <textarea  type="text" style="min-height: 90px;" class="form-control" ng-model="product.description"></textarea>
+                                    <div 
+                                    ckeditor="options"
+                                    ng-model="product.description"
+                                    ></div>
+                                    <!-- <textarea  type="text" style="min-height: 90px;" class="form-control" ng-model="product.description"></textarea> -->
                                     <!-- <textarea id="description-editor-update"  style="min-height: 100px;" ng-model="product.description" placeholder="Mô tả">
                                     </textarea> -->
                                 </div>
