@@ -264,7 +264,9 @@
 <script src="/assets/admin/dist/js/jquery-3.6.0.min.js"></script>
 <script src="/assets/admin/dist/js/angular.min.js"></script>
 <script src="/assets/admin/dist/js/dirPagination.js" type="text/javascript"></script>
-<script src="/assets/admin/dist/js/angular-ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script>
+<script src="http://cdn.ckeditor.com/4.5.11/full-all/plugins/divarea/plugin.js"></script>
+<script src="/assets/admin/dist/js/angular-ckeditor.js"></script> 
 <script src="/assets/admin/dist/js/chart.js"></script>
 <script>
     var app = angular.module('app', ['angularUtils.directives.dirPagination','ckeditor']);

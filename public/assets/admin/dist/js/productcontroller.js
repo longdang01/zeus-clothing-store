@@ -1,5 +1,14 @@
 app.controller('product', function($scope, $http,$rootScope) { //tao 1 controller
     $scope.pageSize = 5;
+
+    // config ckeditor.
+    $scope.options = {  
+        language: 'en',
+        allowedContent: true,
+        entities: false,
+        extraPlugins: 'divarea'
+    };
+
     $("#select-pageSize").change(function(){
         $scope.pageSize = this.value;
         console.log($scope.pageSize);
