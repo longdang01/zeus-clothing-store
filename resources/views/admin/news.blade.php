@@ -73,11 +73,7 @@
                         </div>
                         <div class="form-group">
                             <label>Content:</label>
-                            <div>
-                                <textarea style="height: 100px;" type="text" class="form-control" ng-model="news.content">
-
-                                </textarea>
-                            </div>
+                            <div ckeditor="options" ng-model="news.content"></div>
                         </div>
                     </div>
                     <div class="modal-footer">

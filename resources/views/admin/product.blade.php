@@ -524,12 +524,17 @@
                         <div class="container-fluid row">
                             <div class="form-group">
                                 <label>Description:</label>
-                                <div>
-                                    <textarea id="description-editor-create" style="min-height: 90px;" type="text" class="form-control" ng-model="product.description"></textarea>
+                                <!-- <div>
+                                    
+                                    <textarea id="description-editor-create" style="min-height: 90px;" type="text" class="form-control" ng-model="product.description"></textarea> -->
                                     <!-- <textarea id="description_editor_create" style="min-height: 300px;" ng-model="product.description" placeholder="Mô tả">
                                         {{csrf_field()}}
-                                    </textarea> -->
-                                </div>
+                                    </textarea>
+                                </div> -->
+                                <div 
+                                    ckeditor="options"
+                                    ng-model="product.description"
+                                    ></div>
                             </div>
                         </div>
                 </div>

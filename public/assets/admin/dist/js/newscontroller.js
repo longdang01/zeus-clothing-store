@@ -1,5 +1,11 @@
 
 app.controller('news', function($scope, $http) { //tao 1 controller
+    $scope.options = {  
+        language: 'en',
+        allowedContent: true,
+        entities: false,
+        extraPlugins: 'divarea'
+    };
     $http({
         method: "GET",
         url: "http://localhost:8000/api/news"
