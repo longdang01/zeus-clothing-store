@@ -32,6 +32,8 @@
 
     <!-- Angular, Pagination -->
     <script src="/assets/client/dist/libs/angularJs/angular.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script> -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-sanitize.js"></script>
     <script src="/assets/client/dist/libs/pagination/dirPagination.js"></script>
     <script src="/assets/client/dist/controllers/AppController.js"></script>
 

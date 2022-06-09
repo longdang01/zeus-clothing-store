@@ -45,7 +45,7 @@ class CartController extends Controller
             $cart->save();
         }
 
-        $cartDetails = $this->getCartDetail($request);
+        $cartDetails = $this->getCartDetail($request, $cart);
 
         if(!$cartDetails) {
             $cartDetails = new CartDetail();
@@ -83,11 +83,12 @@ class CartController extends Controller
         ->where('customer_id', $customer_id)->first();
     }
 
-    public function getCartDetail($request) {
+    public function getCartDetail($request, $cart) {
         return CartDetail::with('product')->with('color')->with('size')->
         where('product_id', $request->product_id)->
         where('color_id', $request->color_id)->
-        where('size_id', $request->size_id)
+        where('size_id', $request->size_id)->
+        where('cart_id', $cart->id)
         ->first();
     }
     /**

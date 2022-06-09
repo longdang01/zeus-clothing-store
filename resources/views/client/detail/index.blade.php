@@ -163,7 +163,8 @@
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="tab-description">
                             <div>
-                                @{{ product.description }}
+                                <p ng-bind-html="product.description"> 
+                                </p>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="tab-supplement">
