@@ -271,7 +271,7 @@
     
                                     <div class="product__options-wrap">
                                         <div class="product__options">
-                                            <a href="#" 
+                                            <a href="javascript:;" 
                                             ng-click="addToCart(product, 1)"
                                             class="product__options-add-to-cart">
                                                 Thêm vào giỏ hàng

@@ -47,11 +47,11 @@
                                     </span>
                                 </p>
                                 <h3>@{{ product.price.price | currency:"":0}} VNĐ</h3>
-                                <div class="quickview-paragraph">
-                                    <p>
-                                        @{{ product.description }}
-                                    </p>
-                                </div>
+                                <!-- <div class="quickview-paragraph">
+                                    <p ng-bind-html="product.description"> -->
+                                        <!-- @{{ product.description }} -->
+                                    <!-- </p>
+                                </div> -->
                                 <div class="quickview-options">
                                     <div class="row mb-5">
                                         <div class="col-lg-6">
