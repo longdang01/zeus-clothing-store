@@ -1,6 +1,4 @@
 app.controller('product', function($scope, $http,$rootScope) { //tao 1 controller
-    $scope.pageSize = 5;
-
     // config ckeditor.
     $scope.options = {  
         language: 'en',
@@ -8,8 +6,11 @@ app.controller('product', function($scope, $http,$rootScope) { //tao 1 controlle
         entities: false,
         extraPlugins: 'divarea'
     };
-
-    $("#select-pageSize").change(function(){
+    $scope.changePage = function(number){
+        $scope.pageIndex=number;
+        console.log($scope.pageIndex);
+    }
+    $("#input-pageSize").change(function(){
         $scope.pageSize = this.value;
         console.log($scope.pageSize);
     })
@@ -41,7 +42,6 @@ app.controller('product', function($scope, $http,$rootScope) { //tao 1 controlle
     $scope.price =null;
     $scope.size = null;
     $scope.product = null;
-    $scope.products = null;
     $scope.uploadFile = function(filedata, element, object) {
         var reader = new FileReader();
         reader.onload = function (ev) {
@@ -94,17 +94,6 @@ app.controller('product', function($scope, $http,$rootScope) { //tao 1 controlle
             $scope.product = null;
             $scope.modalTitle = "Add new product";
             $('#modelcreate').modal('show');
-            // ClassicEditor
-            //     .create( document.querySelector( '#description-editor-create' ), {
-            //         plugins: [ Essentials, Paragraph, Bold, Italic ],
-            //         toolbar: [ 'bold', 'italic' ]
-            //     } )
-            //     .then( editor => {
-            //         console.log( 'Editor was initialized', editor );
-            //     } )
-            //     .catch( error => {
-            //         console.error( error.stack );
-            //     } );
         } else {
             $scope.modalTitle = "Edit product";     
             $http({
@@ -116,17 +105,12 @@ app.controller('product', function($scope, $http,$rootScope) { //tao 1 controlle
                 $scope.product.sub_category_id = $scope.product.sub_category_id + '';
                 $scope.product.supplier_id = $scope.product.supplier_id + '';
                 $scope.product.brand_id = $scope.product.brand_id + '';
+                $scope.product.color.forEach(function(i){
+                    i.images = i.images.split(",");
+                })
                 $('#description-editor-update').text($scope.product.description);
                 $('#size-table-update').attr("src",'/upload/product/' + $scope.product.id + "/" +$scope.product.size_table);
                 $('#modelupdate').modal('show');
-                // ClassicEditor
-                //     .create( document.querySelector( '#description-editor-update' ))
-                //     .then( editor => {
-                //         console.log( editor.content );
-                //     } ) 
-                //     .catch( error => {
-                //         console.error( error.stack );
-                //     } );
             },function(e){
                 alert("Error");
             });

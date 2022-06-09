@@ -15,14 +15,6 @@
               <li class="breadcrumb-item active">Product</li>
             </ol>
           </div><!-- /.col -->
-          <div>
-            <select id="select-pageSize" class="form-select" style="width: 70px;float: left;margin-right:10px;" ng-modal='pageSize'>
-              <option value="5" selected>5</option>
-              <option value="10">10</option>
-              <option value="15">15</option>
-            </select> 
-            <p style="line-height: 20px;align-content: center;font-size: 20px;float:left;padding-top: 8px;">Dòng</p>
-          </div>
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -46,7 +38,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr dir-paginate="item in products|itemsPerPage:pageSize|filter:keyword_search" pagination-id="1">
+            <tr dir-paginate="item in products|itemsPerPage:5|filter:keyword_search" pagination-id="1">
               <td>@{{$index+1}}</td>
               <td>@{{item.product_name}}</td>
               <td>@{{item.origin}}</td> 
@@ -63,9 +55,9 @@
         </table>
         <dir-pagination-controls
             pagination-id="1"
-            max-size="pageSize"
+            max-size="5"
             direction-links="true"
-            boundary-links="true" >
+            boundary-links="true">
         </dir-pagination-controls>
       </div><!-- /.container-fluid -->
     </section>
@@ -403,8 +395,19 @@
                                     <tr dir-paginate="c in product.color|itemsPerPage:4" pagination-id="2">
                                     <td>@{{$index_color+1}}</td>
                                     <td>@{{c.color_name}}</td>
-                                    <td><img style="width: 60px;" src="/upload/product/@{{product.id}}/@{{c.avatar}}" alt=""></td>
-                                    <td><img style="width: 60px;" src="/upload/product/@{{product.id}}/@{{c.images}}" alt=""></td>
+                                    <!-- <td><img style="width: 60px;" src="/upload/product/@{{product.id}}/@{{c.avatar}}" alt=""></td> -->
+                                    <td>
+                                        <img style="width: 60px;" ng-if="!(c.avatar.substring(0, 5) === 'https')" ng-src="/upload/product/@{{ product.id }}/@{{ c.avatar }}"
+                                        class="product__img">
+                                        <img style="width: 60px;" ng-if="(c.avatar.substring(0, 5) === 'https')" ng-src="@{{ c.avatar }}"
+                                        class="product__img">
+                                    </td>
+                                    <td>
+                                        <img style="width: 60px;" ng-if="!(c.images[0].substring(0, 5) === 'https')" ng-src="/upload/product/@{{ product.id }}/@{{ c.images[0] }}"
+                                        class="product__img">
+                                        <img style="width: 60px;" ng-if="(c.images[0].substring(0, 5) === 'https')" ng-src="@{{ c.images[0] }}"
+                                        class="product__img">
+                                    </td>
                                     <td>@{{c.hex}}</td>
                                     <td><button class="btn btn-info" ng-click="show_color_modal(c.id)">&nbsp;Edit</button></td>
                                     <td><button class="btn btn-danger" ng-click="deletecolorClick(c.id)">&nbsp;Delete</button></td>
